@@ -1,12 +1,17 @@
 # Sharing Project Code:  Environmental Kuznets Curve
 ## Key idea: IS THE ENVIRONMENTAL KUZNETS CURVE STILL ACCURATE? Using evidence from PM2.5 Concentration Data and indicators of development. 
 
+# Instructions for our group
+- When you commit changes : message the group chat 
+- once a new coding file is uploaded : add the name of the file in the table of contents under the corrent subheading
+
 # Table of contents
 1. [Introduction](#introduction)
 2. [Data used](#paragraph1)
     1. [World Health Organisation API](#subparagraph1)
     2. [World Bank CSV dataset](#subparagraph2) 
-3. [Collobarators ](#paragraph2)
+3. [Data visualisation](#paragraph2)
+4. [Collobarators](#paragraph3)
 
 ## Introduction - our project and our motivation <a name="introduction"></a>
 During the last few years, there’s been a growing concern on the industrialisation of less developed countries and its impact on climate change as growing industrialisations remains synonymous with growing emissions in a world where we can not afford that. By looking at the accuracy of the environmental kuznet’s curve, we will be able to prove whether policies, aimed at flattening this curve, are useful and accurate. And this is what made us interested in this data. 
@@ -37,7 +42,9 @@ GNI per capita +
 % Manufacturing sector in GDP
 GDP growth (%)
 
-## Collobarators  <a name="paragraph2"></a>
+## Data visualisation <a name="paragraph2"></a>
+
+## Collobarators  <a name="paragraph3"></a>
 Ines McCairley
 Adrien Joly
 Hassam Zahid
