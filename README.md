@@ -3,7 +3,7 @@
 
 # Instructions for our group
 - When you commit changes : message the group chat 
-- once a new coding file is uploaded : add the name of the file in the table of contents under the corrent subheading
+- once a new coding file is uploaded : add the name of the file in the table of contents under the current subheading
 
 # Table of contents
 1. [Introduction](#introduction)
@@ -27,26 +27,40 @@ Pollution indicator: SDGPM25  (Particulate matter (PM) is everything in the air 
 Every country w/ 10 years of data (2010-2019)
 Air Pollution levels in 5 categories (DIM1) (Total, City, Rural, Town, Urban)
 
+[Code for PM2.5 - PM25.py](PM25.py)
+
+[CSV file for PM2.5](PM25_data.csv)
+
 ### World Bank CSV dataset <a name="subparagraph2"></a>
 
 Measuring development through 9 indicators:
-% urban population (development stage)
-School enrollment 
-Rural population  (development stage)
-Public spending on education +
-Population total  (dev stage)
-Population growth (dev stage)
-Life expectancy +
-Female labour force +
-GNI per capita +
-% Manufacturing sector in GDP
-GDP growth (%)
+- % urban population (development stage)
+- School enrollment 
+- Rural population  (development stage)
+- Public spending on education +
+- Population total  (dev stage)
+- Population growth (dev stage)
+- Life expectancy +
+- Female labour force +
+- GNI per capita +
+- % Manufacturing sector in GDP
+- GDP growth (%)
+
+[Code for indicators - Indicators Data.ipynb](Indicators Data.ipynb) there's a mistake here i will fix it later
+
+[Indicators data cvs file (unclean) - indicators_data.csv](indicators_data.csv)
+
+[Indicators data information - indicators_data_info.csv](indicators_data_info.csv)
+
 
 ## Data visualisation <a name="paragraph2"></a>
 
 ## Collobarators  <a name="paragraph3"></a>
 Ines McCairley
+
 Adrien Joly
+
 Hassam Zahid
+
 Sara Tiron
 
