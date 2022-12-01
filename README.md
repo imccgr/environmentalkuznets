@@ -27,7 +27,7 @@ Pollution indicator: SDGPM25  (Particulate matter (PM) is everything in the air 
 Every country w/ 10 years of data (2010-2019)
 Air Pollution levels in 5 categories (DIM1) (Total, City, Rural, Town, Urban)
 
-[Code for PM2.5 - PM25.py](PM25.py)
+[Code for PM2.5](PM25.py)
 
 [CSV file for PM2.5](PM25_data.csv)
 
@@ -46,11 +46,13 @@ Measuring development through 9 indicators:
 - % Manufacturing sector in GDP
 - GDP growth (%)
 
-[Code for indicators - Indicators Data.ipynb](Indicators Data.ipynb) there's a mistake here i will fix it later
+[Original excel file (unclean)](indicators_unclean.xlsx)
+[Clean Data](indicators_clean.csv)
+[Code to clean data](Indicators_data_cleaning.ipynb)
 
-[Indicators data cvs file (unclean) - indicators_data.csv](indicators_data.csv)
+### Merging Data
 
-[Indicators data information - indicators_data_info.csv](indicators_data_info.csv)
+[merging data code](Final_data_cleaning.ipynb)
 
 
 ## Data visualisation <a name="paragraph2"></a>
