@@ -47,7 +47,9 @@ Measuring development through 9 indicators:
 - GDP growth (%)
 
 [Original excel file (unclean)](indicators_unclean.xlsx)
+
 [Clean Data](indicators_clean.csv)
+
 [Code to clean data](Indicators_data_cleaning.ipynb)
 
 ### Merging Data
