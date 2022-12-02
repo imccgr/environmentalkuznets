@@ -46,17 +46,17 @@ Measuring development through 9 indicators:
 - % Manufacturing sector in GDP
 - GDP growth (%)
 
-[Original excel file (unclean)](indicators_unclean.xlsx)
+[Original excel file (unclean)](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/indicators_unclean.xlsx)
 
-[Clean Data](indicators_clean.csv)
+[Clean Data](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/indicators_clean.csv)
 
-[Code to clean data](Indicators_data_cleaning.ipynb)
+[Code to clean data](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/Indicators_data_cleaning.ipynb)
 
 ### Merging Data
 
-[merging data code](Final_data_merging.ipynb)
+[merging data code](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/Final_data_merging.ipynb)
 
-[final merged dataframe](final_dataframe.csv)
+[final merged dataframe](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/final_dataframe.csv)
 
 
 ## Data visualisation <a name="paragraph2"></a>
