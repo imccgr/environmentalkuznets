@@ -46,7 +46,7 @@ Measuring development through 9 indicators:
 - % Manufacturing sector in GDP
 - GDP growth (%)
 
-[Original excel file (unclean)](..Indicators csv cleaning and final dataframe/indicators_unclean.xlsx)
+[Original excel file (unclean)](../Indicators csv cleaning and final dataframe/indicators_unclean.xlsx)
 
 [Clean Data](Indicators csv cleaning and final dataframe/indicators_unclean.xlsx)
 
