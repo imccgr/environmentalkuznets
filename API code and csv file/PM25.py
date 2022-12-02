@@ -20,7 +20,7 @@ def city_for_each_country():
     return(city_list_of_avg_2010_to_2019)
 city_list_of_avg_2010_to_2019 = city_for_each_country()
 
-dict = {"Country:": country_list, "City Average PM2.5:": total_list_of_avg_2010_to_2019, "Total Average PM2.5:": city_list_of_avg_2010_to_2019}
+dict = {"Country:": country_list, "City Average PM2.5:": city_list_of_avg_2010_to_2019, "Total Average PM2.5:": total_list_of_avg_2010_to_2019}
 df = pd.DataFrame(dict)
-df.to_csv('PM25_data_v2.csv')
+df.to_csv('PM25_data.csv')
 print(df)
