@@ -27,9 +27,9 @@ Pollution indicator: SDGPM25  (Particulate matter (PM) is everything in the air 
 Every country w/ 10 years of data (2010-2019)
 Air Pollution levels in 5 categories (DIM1) (Total, City, Rural, Town, Urban)
 
-[Code for PM2.5](PM25.py)
+[Code for PM2.5](API code and csv file/PM25.py)
 
-[CSV file for PM2.5](PM25_data.csv)
+[CSV file for PM2.5](API code and csv file/PM25_data.csv)
 
 ### World Bank CSV dataset <a name="subparagraph2"></a>
 
