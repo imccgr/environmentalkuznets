@@ -48,7 +48,7 @@ Measuring development through 9 indicators:
 
 [Original excel file (unclean)](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/indicators_unclean.xlsx)
 
-[Clean Data](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/indicators_clean.csv)
+[Clean Data](Indicators csv cleaning and final dataframe/indicators_unclean.xlsx)
 
 [Code to clean data](https://github.com/neocommits/environmentalkuznets/blob/e51ec8c181716de6e131260745501ded40ae3c37/Indicators%20csv%20cleaning%20and%20final%20dataframe/Indicators_data_cleaning.ipynb)
 
