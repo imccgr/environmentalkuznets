@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" type="jpg" href="globe.jpg"/>
+<link rel="shortcut icon" type="jpg" href="ds105 pic\globe.jpg"/>
 <title> Morpheus - The environnmental Kuznet's Curve </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +17,9 @@
       font-weight: normal;
       color: white;
       font-size: 100px;
-    text-align: center;
-    font-family: Luminari, sans-serif;
-  }
+      text-align: center;
+      font-family: Luminari, sans-serif;
+    }
 
   h3 {
       font-weight: bold;
@@ -27,36 +27,118 @@
       font-size: 22px;
       text-align: center;
       font-family: Luminari, sans-serif;
-  }
+    }
     
-    a:link {
+  a:link {
       font-size: 14px;
       background-color: transparent;
     }
     
-    body {
+  body {
       margin: 0;
       padding: 0;
       background-color: black;
     }
 
-    p {
-      text-align: justify;
+  p {
+      text-align: center;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 20px;
       margin: 10px;
       color:white;
     }
+  
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  }
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+  }
+    
+  * {box-sizing:border-box}
+
+    /* Slideshow container */
+  .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+  /* Hide the images by default */
+  .mySlides {
+      display: none;
+    }
+
+    /* Next & previous buttons */
+  .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+  .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    /* The dots/bullets/indicators */
+  .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+  .active, .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+  .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+  @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 </style>
 
-<br>
+<script src="script.js" type="text/javascript"></script>
 
-<!-- Navigation (to change the links) -->
+<br>
+<!-- Navigation -->
 <nav>
-    <a href="brons.html">MOTIVATION</a>
-    <a href="tupinrond.html">DATA</a>
-    <a href="tutu0.html">INITIAL DESCRIPTIVE STATISTICS</a>
-    <a href="quiz.html">RESULTS</a>
+  <a href="index.html">MOTIVATION</a>
+  <a href="analysis.html">MULTIPLE COUNTRY ANALYSIS</a>
+  <a href="brazil.html">BRAZIL ANALYSIS</a>
 </nav>
 
 <!-- Header -->
@@ -91,7 +173,39 @@
     </div>
   </div>
 
-  <h3> Our research attempts to evaluate the validity of the Kuznets curve </h3>
+<h3> Our Research </h3>
+
+<div class="row">
+  <div class="column">
+    <a href="index.html">
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Environmental_Kuznets_Curve.png"  alt="Environmental Kuznet's Curve" style="width:100%; height:250px"/>
+        <figcaption style="color:white; font-size:20px">Our Motivation</figcaption>
+      </figure> 
+    </a>
+  </div>
+  <div class="column">
+    <a href="analysis.html">
+      <figure>
+      <img src="ds105 pic\multiplecountry.PNG" alt="Multiple Country Analysis" style="width:100%; height:250px"> 
+      <figcaption style="color:white; font-size:20px">Multiple Country Analysis</figcaption>
+      </figure>
+    </a>
+  </div>
+  <div class="column">
+    <a href="brazil.html">
+      <figure>
+      <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:100%; height:250px">
+    <figcaption style="color:white; font-size:20px">Brazil Analysis</figcaption>
+    </figure>
+    </a>
+  </div>
+</div>
+
+
+<br>
+
+<h3> Our Motivation </h3>
 
 <br>
 
@@ -102,26 +216,26 @@
         alt="Simon Kuznet's Picture", style="height:450px; width:400px; float: left; margin: 5px">
     </div>
 
-<p>
-    Named after Nobel Prize-winning economist Simon Kuznets, the environmental Kuznet's Curbe relates environmental degradation (pollution) to the stage of economic development
+<p style="text-align: justify">
+  Our research attempts to evaluate the validity of the Kuznets curve. Named after Nobel Prize-winning economist Simon Kuznets, this curve relates environmental degradation (pollution) to the stage of economic development
 </p>
 
 <br>
 
-<p>
+<p style="text-align: justify">
     The increasing frequency of climate disasters across the globe calls for a coordinated response among world leaders and institutions. The Kuznets curve could help policymakers target these global efforts by reducing emissions in high-emitting countries, accelerating the path towards net zero. 
 </p>
 
 <br>
 <br>
 
-<p>
+<p style="text-align: justify">
     We use Particulate Matter (PM2.5) concentration data from the WHO’s API and various development indicators from the World Bank’s database to test for a relationship between development and pollution. Using both a PCA and mean-adjusted log-scaled quadratic linear regression model, we find little evidence of the relationship implied by Kuznets. Instead, plotting PM2.5 against individual indicators give very different results
 </p>
 
 <br>
 
-<p>
+<p style="text-align: justify">
     We conclude by zooming in on the Brazilian economy, which has experienced substantial economic development over the last 30 years and has seen a decline in its air pollution level since 2010.
 </p>
 
@@ -166,79 +280,23 @@
 
 <p>As mentioned above, our research uses PM.5 data as a proxy for environmental degradation. PM2.5 refers to fine particulate matter, defined as particles that are less than 2.5. microns or less in diameter. PM2.5 is an air pollutant that is a concern for people’s health at a high level. Pm2.5 particles can be inhaled, depositing on airways and lungs, causing tissue damage and lung inflammation. They can cause an array of health issues including  premature mortality, increased hospital admissions for heart or lung causes, acute and chronic bronchitis. </p>
 
-<br>
-<div class="w3-container">
-    <hr>
-    <div class="w3-center">
-      <h2 style = "font-weight: bold; color:white">DATA</h2>
-      <p w3-class="w3-large">Through our data analysis, there are several questions we want to answer.</p>
-    </div>
-  <div class="w3-responsive w3-card-4">
-  <table class="w3-table w3-striped w3-bordered">
-    <tbody>
-     <tr>
-        <td style = "font-size:20px">Which World Bank indicators best predict the level of development so that we can use them in our development index?</td>
-    </tr>
-    
-    <tr>
-        <td style = "color:black; font-size:20px"> Do pollution level rise as countries industrialize? </td>
+<h3>Next:</h3>
 
-    </tr>
-
-    <tr>
-        <td style = "font-size:20px">Do pollution levels decline during post-industrialisation (as economies transition from manufacturing to services)</td>
-    </tr>
-
-    <tr>
-        <td style = "color:black; font-size:20px">To what degree does the overall shape of the Kuznets curve hold in the present day?</td>
-    </tr>
-
-    <tr>
-        <td style = "font-size:20px">Can we witness the Kuznets curve by looking at the evolution of industrialising countries over time?</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="column">
+    <a href="analysis.html">
+      <figure>
+      <img src="ds105 pic\multiplecountry.PNG" alt="Multiple Country Analysis" style="width:100%; height:250px"> 
+      <figcaption style="color:white; font-size:20px">Multiple Country Analysis</figcaption>
+      </figure>
+    </a>
   </div>
-
-<br>
-
-<dl>  
-    <dt>
-        <p>To measure economic development, we require various development indicators. In order to make our data easier to analyse, our development indicator data comes from a single year (2018), which has the least missing data across the indicators we have selected. We select 10 development indicators from the Health, Nutrition and Population statistics, which are shown below:</p>
-    </dt>  
-    <dd>
-        <p>Ratio of urban population to total population (%)</p>
-    </dd>  
-    <dd>
-        <p>School enrolment (% of population)</p>
-    </dd>  
-    <dd>
-        <p>Public spending on education, total (% of GDP)</p>
-    </dd>  
-    <dd> 
-        <p>Population, total </p>
-    </dd>
-    <dd>
-        <p>Population Growth (%)</p> 
-    </dd>
-    <dd>
-        <p>Life expectancy at birth, total (years)</p> 
-    </dd>
-    <dd>
-        <p>Female labour force (% of total labour force)</p> 
-    </dd>
-    <dd>
-        <p>GNI per capita, Atlas method (current USD)</p> 
-    </dd>
-    <dd>
-        <p>Size of Manufacturing sector (% of total GDP)</p> 
-    </dd>
-    <dd>
-        <p>GDP growth (%)</p> 
-    </dd>
-</dl>
-
-<br>
+  <div class="column">
+    <a href="brazil.html">
+      <figure>
+      <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:100%; height:250px">
+    <figcaption style="color:white; font-size:20px">Brazil Analysis</figcaption>
+    </figure>
+    </a>
+  </div>
 </div>
-</body>
-</html>

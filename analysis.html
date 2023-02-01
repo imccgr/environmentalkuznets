@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" type="jpg" href="ds105 pic\globe.jpg"/>
+<title> Morpheus - The environnmental Kuznet's Curve </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<!-- Navigation (to change the style) -->
+<style>
+    h1 {
+        font-weight: normal;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+        font-family: Luminari, sans-serif;
+      }
+  
+    h3 {
+        font-weight: bold;
+        color: white;
+        font-size: 22px;
+        text-align: center;
+        font-family: Luminari, sans-serif;
+      }
+      
+    a:link {
+        font-size: 14px;
+        background-color: transparent;
+      }
+      
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+  
+    p {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin: 10px;
+        color:white;
+      }
+    
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+  .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+  
+  /* Clear floats after image containers */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+      
+    * {box-sizing:border-box}
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+     background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+</style>
+  
+<script src="script.js" type="text/javascript"></script>
+
+  
+<!-- Navigation -->
+<nav>
+    <a href="index.html">MOTIVATION</a>
+    <a href="analysis.html">MULTIPLE COUNTRY ANALYSIS</a>
+    <a href="brazil.html">BRAZIL ANALYSIS</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+    <div class="w3-center">
+    <h4>A MORPHEUS PRODUCTION</h4>
+    <h1 class="w3-xxxlarge w3-animate-bottom">MULTIPLE COUNTRY ANALYSIS</h1>
+    <div class="w3-padding-32">
+        <h2 class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:900;">INITIAL DATA WRANGLING AND ANALYSIS</h2>
+    </div>
+</header>
+
+
+<br>
+<div class="w3-container">
+    <hr>
+    <div class="w3-center">
+      <h2 style = "font-weight: bold; color:white">DATA</h2>
+      <p w3-class="w3-large">Through our data analysis, there are several questions we want to answer.</p>
+    </div>
+  <div class="w3-responsive w3-card-4">
+  <table class="w3-table w3-striped w3-bordered">
+    <tbody>
+     <tr>
+        <td style = "font-size:20px; color: white">Which World Bank indicators best predict the level of development so that we can use them in our development index?</td>
+    </tr>
+    
+    <tr>
+        <td style = "color:black; font-size:20px"> Do pollution level rise as countries industrialize? </td>
+
+    </tr>
+
+    <tr>
+        <td style = "font-size:20px; color:white">Do pollution levels decline during post-industrialisation (as economies transition from manufacturing to services)</td>
+    </tr>
+
+    <tr>
+        <td style = "color:black; font-size:20px">To what degree does the overall shape of the Kuznets curve hold in the present day?</td>
+    </tr>
+
+    <tr>
+        <td style = "font-size:20px; color:white">Can we witness the Kuznets curve by looking at the evolution of industrialising countries over time?</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+<br>
+<h3>To measure economic development, we require various development indicators.</h3>
+<p> In order to make our data easier to analyse, our development indicator data comes from a single year (2018), which has the least missing data across the indicators we have selected. We select 10 development indicators from the Health, Nutrition and Population statistics, which are shown below:</p>
+<ol style="color:white; font-size:20px; margin:10px">
+    <li>Ratio of urban population to total population (%)</li>
+    <li>School enrolment (% of population)</li>
+    <li>Public spending on education, total (% of GDP)</li>
+    <li>Population, total</li>
+    <li>Population Growth (%)</li>
+    <li>Life expectancy at birth, total (years)</li>
+    <li>Female labour force (% of total labour force)</li>
+    <li>GNI per capita, Atlas method (current USD)</li>
+    <li>Size of Manufacturing sector (% of total GDP)</li>
+    <li>GDP growth (%)</li>
+</ol>
+
+<br>
+
+<h3>Obtaining Data</h3>
+
+<img src="ds105 pic\obtainingdatawho.png" alt="World Map PM2.5 concentration from the W.H.O" class="center">
+
+<br>
+
+<p>The WHO (World Health Organization) provides yearly PM2.5 data between 2010-2019. 
+    The pollution indicator code is SDGPM25, and the data is split across country (SpatialDIM) and across time (TimeDim). 
+    Within each countries, air pollution is split in 5 categories: “Total”, “City”, “Rural”, “Town” and “Urban”. 
+    The data corresponds to population weighted annual mean levels of PM2.5. </p>
+<br>
+
+<p>Fig 2 show the raw PM2.5 dataset and a snippet for one country (Afghanistan) and one year (2010).</p>
+
+<figure>
+    <img src="ds105 pic\datafromWHO.png" alt="Data from the WHO PM2.5 database" class="center">
+    <figcaption  style="color:white; font-size:20px">Fig 2: Data from the WHO PM2.5 database</figcaption>
+</figure>
+
+<p>For simplicity, we wanted to extract “Total” concentration over 10 time periods for all 195 countries.</p>
+
+<p>We realised that our initial code for extracting PM2.5 (using a sequence generation method) was wrong. With 9450 data points and 195 countries, there were less than 50 data points per country, which meant there was some missing data. As such, using the list comprehension tool and vectorised operations, we made it simpler to change to other categories (like “Town” or “Urban” as a substitute)</p>
+<br>
+<p>This resulted in the following dataset (196 rows * 11 columns):</p>
+
+<img src="ds105 pic\dataset1.png" alt="PM2.5 data set" class="center">
+
+<br>
+<p>For the development data, our raw dataset looked like this:</p>
+<img src="ds105 pic\devdataraw.png" alt="Development Data Raw Dataset" class="center">
+<br>
+<p>As shown above, the development dataset was in ‘long’ format. Merging with the air pollution dataframe enabled us to change the dataset to ‘wide’ format. This resulted in the following final dataframe:</p>
+
+<img src="ds105 pic\finaldataframe.png" alt="Final DataFrame" class="center">
+<img src="ds105 pic\finaldataframe2.png" alt="Final DataFrame" class="center">
+
+<br>
+<h3> Data Wrangling</h3>
+<br>
+
+<p>The first part of our analysis was focused on Principal Component Analysis (PCA) of the development indicators.</p>
+<br>
+<p>We realised that 4 of our indicators (School Enrolment, Public Spending on Education, Poverty headcount ratio, size of manufacturing sector) had less than 100 datapoints (out of 195 countries), so we reduced our scope to 6 indicators. With these, we dropped the NaN values which showed missing data for the whole indicator list. Note that, if a country had a missing indicator, it was likely that 2+ indicators were missing as well. This reduced the number of countries to 175, which we deemed an acceptable level. </p>
+
+<img src="ds105 pic\reducingcountries.png" alt="Reducing countries code" class="center">
+
+<br>
+
+<p>The second part of our research was focused on data visualisations of the evolution  of PM2.5 concentration across time. We compared PM2.5 levels with two indicators, GNI/capita and population growth across time. We extracted time series data for the development indicators and cleaned it using Python, as before. </p>
+<br>
+<p>For PM2.5 Data:</p>
+<img src="ds105 pic\cleaningpm2.5.png" alt="Cleaning PM2.5 data" class="center">
+<br>
+
+<p> Result:</p>
+<img src="ds105 pic\resultpm2.5dataframe.png" alt="PM.5 dataframe after cleaning" class="center">
+
+<br>
+<p>For indicators data:</p>
+<img src="ds105 pic\indicatorsdatacode.png" alt="Cleaning indicators data" class="center">
+
+<br>
+<p>Merging:</p>
+<img src="ds105 pic\mergingcode.png" alt="Merging code" class="center">
+
+<br>
+<h3>Main Limitations:</h3>
+<ol style="color:white; font-size:20px; margin:10px">
+    <li>Our analysis only focuses on the “Total” PM2.5 concentration. We are limiting the scope of our research to looking at country-country differences, rather than regional analysis. To combat this, we choose to maintain as many countries in our analysis, to incorporate all stages of development. </li>
+    <li>For simplicity, we chose to ignore the countries with missing data (NaN values) and indicators with too much missing data. Less developed countries, on average, have lower quality data, since their statistical agencies are not as developed. This means that the  countries with the most NA values are less developed. This is likely to induce bias in our research. We could have replaced these data with estimates, taking into account parameters such as population and GDP or comparing with similar economies. However, given the limited timeline  of this project this was not as feasible. </li>
+    <li>We chose to take a static perspective on our development variables. As such, we picked a random year (2018) to fix the “level of development”. As such, we assumed similar levels of GDP across the 2010-2019 period. For developing countries, this is likely to understate the level of development across time and may be a source of bias. Similar development levels may “flatten” the curve during the industrialisation stage (where countries’ level of development changes fastest), which would weaken the validity of the Kuznets curve. </li>
+    <li>Our data ignores the effect of inequalities on levels of air pollution. One improvement could have been to use development factors that showed the effects of inequality on air pollution levels. Intuitively, larger inequalities (not reflected in GNI/capita) could reflect lower development level, and higher rates of pollution (more GHG emissions if people use non-renewable energy forms for heating homes, for example). ? </li>
+    <li>Our data does not take into account income inequality. Thus we assume the effects of air pollution to be homogenous across the whole population of the country, which is likely not the case- since poorer areas may be more at risk from </li>
+    <li>The country level analysis, ignores redistributional effects.</li>
+    <li>We do not gather data on income inequality. Income inequality is also an important factor that can explain pollution. Arguably, countries with a more unequal distribution of wealth, can be less developed?</li>
+</ol>
+<br>
+<h3>Exploratory data analysis:</h3>
+<br>
+
+<figure>
+    <img src="ds105 pic\distributionofPM25.png" alt="Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time." class="center">
+    <figcaption  style="color:white; font-size:20px">Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time.</figcaption>
+</figure>
+
+<br>
+
+<figure>
+    <img src="ds105 pic\histogram.png" alt="Fig 5: Histogram of world PM2.5 concentration data across time." class="center">
+    <figcaption  style="color:white; font-size:20px">Fig 5: Histogram of world PM2.5 concentration data across time.</figcaption>
+</figure>
+
+<br>
+<h3>Methodology</h3>
+<br>
+<p>We used Jupyter Notebook and Python for data cleaning, and then Python and R packages to analyse our data and create data visualisations.</p>
+<br>
+<p>Our first objective was cleaning and merging multiple datasets coherently. This involved getting rid of missing values and columns with too much missing data (as discussed above). During the merging process, we ensured that the list of countries in both datasets matched each other, such that development data was correctly matched to a country’s PM2.5 concentration. We also converted data types where applicable. We tried to preserve as much of our data as possible, in order to arrive at meaningful conclusions using data visualisation.</p>
+<br>
+<p>Then, the first part of our research involved using Principal Component Analysis to reduce the dimensionality of our data whilst preserving the most information. By using a PCA package on python, we transformed our 6 development indicators into 6 principal components. We plotted the explained variance ratio and cumulative explained variance to narrow down the 2 best princ-ipal components. </p>
+<br>
+<p>We used python to create plots of PM2.5 concentration data against each PCA component, which would show to what extent our data behaved like a Kuznets curve. We replicated this across 3 period (2010, 2015, 2019) to see broad changes in pollution levels. Then we used a quadratic PCA regression model for each PCA component. Since all principal components are orthogonal to each other, their correlation will be zero, so a multi-variate regression would not be appropriate. </p>
+<br>
+<p>The second part of our research involved restricting our 6 development indicators to just 2 variables. </p>
+<br>
+<p>This involved using a multi-linear quadratic log regression model. We determined the 2 best indicators, which were population growth and GNI per capita because of their p-values (p < 0.05). Using R, we created scatterplots of PM2.5 concentration against each development indicator. We used a logarithmic scale on certain indicators to increase the legibility of our data.</p>
+<br> 
+<p> We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the data. This showed a 95% confidence interval to the data. We also created a 3D plot showing the relationship between our two “best” development indicators and PM2.5 concentration.</p>
+<br>
+<p> Lastly, we used ggplot to create animated scatter plots of PM2.5 concentration against our 2 indicators. We showed the behaviour of countries across 2010-2019, using time series data for both variables. This enabled us to track the path of specific countries over time (both developing and developed economies). </p>
+<br>
+
+<h3>Results</h3>
+<p>We realise that the Kuznets curve is a primarily theoretical relationship between development stage and level of pollution. We make certain assumptions to simplify the data we are working with, which may reduce the accuracy of the shape of our Kuznets curve. </p>
+<br>
+<p>Broad Overview:</p>
+
+<figure>
+    <img src="ds105 pic\pm25levelsworld.gif" alt="PM2.5 levels accross the globe" class="center">
+    <figcaption  style="color:white; font-size:20px">PM2.5 levels accross the globe</figcaption>
+</figure>
+
+<br>
+
+<figure>
+    <img src="ds105 pic\piecharts.png" alt="Pie chart showing PM2.5 concentration levels accross 3 years" class="center">
+    <figcaption  style="color:white; font-size:20px">Pie chart showing PM2.5 concentration levels accross 3 years</figcaption>
+</figure>
+<br>
+
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 9</div>
+        <img src="ds105 pic\education.png" style="width:100%">
+        <div class="text">Education levels vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 9</div>
+        <img src="ds105 pic\female_labourforce.png" style="width:100%">
+        <div class="text">Female Labour Force vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 9</div>
+        <img src="ds105 pic\GNI.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 9</div>
+        <img src="ds105 pic\lifeexpectancy.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">5 / 9</div>
+        <img src="ds105 pic\poverty.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">6 / 9</div>
+        <img src="ds105 pic\ruralpop.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">7 / 9</div>
+        <img src="ds105 pic\school.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">8 / 9</div>
+        <img src="ds105 pic\totalpopulation.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+    
+    <div class="mySlides fade">
+        <div class="numbertext">9 / 9</div>
+        <img src="ds105 pic\urbanpop.png" style="width:100%">
+        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+    </div>
+</div>
+
+<div>
+<!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+    
+</div>
+</body>
+</html>
