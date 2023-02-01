@@ -23,7 +23,7 @@
     h3 {
         font-weight: bold;
         color: white;
-        font-size: 22px;
+        font-size: 27px;
         text-align: center;
         font-family: Luminari, sans-serif;
       }
@@ -47,6 +47,13 @@
         color:white;
       }
     
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
     /* Three image containers (use 25% for four, and 50% for two, etc) */
   .column {
         float: left;
@@ -60,7 +67,6 @@
         clear: both;
         display: table;
     }
-      
     * {box-sizing:border-box}
 
     /* Slideshow container */
@@ -135,7 +141,7 @@
     }
 
     .active, .dot:hover {
-     background-color: #717171;
+        background-color: #717171;
     }
 
     /* Fading animation */
@@ -148,7 +154,6 @@
         from {opacity: .4}
         to {opacity: 1}
     }
-
 </style>
   
 <script src="script.js" type="text/javascript"></script>
@@ -249,7 +254,7 @@
 <br>
 <p>This resulted in the following dataset (196 rows * 11 columns):</p>
 
-<img src="ds105 pic\dataset1.png" alt="PM2.5 data set" class="center">
+<img src="ds105 pic\dataset1.png" alt="PM2.5 data set" class="center" style="text-align: center">
 
 <br>
 <p>For the development data, our raw dataset looked like this:</p>
@@ -352,79 +357,136 @@
     <img src="ds105 pic\piecharts.png" alt="Pie chart showing PM2.5 concentration levels accross 3 years" class="center">
     <figcaption  style="color:white; font-size:20px">Pie chart showing PM2.5 concentration levels accross 3 years</figcaption>
 </figure>
+
 <br>
 
+<h3> Sub-Problem 1:  Which World Bank indicators best predict the level of development so that we can use them in our development index?</h3>
+<br>
+
+<p> We use the LinearRegression package on Python to select the two most significant indicators among our five indicators, using a quadratic regression model. Regression Equation:</p>
+
+<br>
+
+<img src="ds105 pic\equation.png" alt="Quadratic regression model: regression equation" class="center">
+
+<p> In which:</p>
+<p>X_1 = Log population, mean-adjusted</p>
+<p>X_2 = Log GNI/capita, mean-adjusted</p>
+<p>X_3 = Log Life expectancy, mean-adjusted</p>
+<p>X_4 = Female labour force ratio, mean-adjusted</p>
+<p>X_5 = Population growth, mean-adjusted</p>
+
+<figure>
+    <img src="ds105 pic\variablesdataframe.png" alt="Dataframe of the variables" class="center">
+    <figcaption  style="color:white; font-size:20px">Dataframe of the variables</figcaption>
+</figure>
+<br>
+<figure>
+    <img src="ds105 pic\codelinearregression.png" alt="Code Linear Regression" class="center">
+    <figcaption  style="color:white; font-size:20px">Code Linear Regression</figcaption>
+</figure>
+
+<br>
+<p>As shown by the table of regression results, the variables which stand out most are x2, x6 and x9.  These correspond to log population squared (mean-adjusted) (x2), and log life expectancy squared (mean adjusted) (x6), and log population growth (mean-adjusted) (x9). This helped us figure out which indicators were most relevant in our analysis. </p>
+<br>
+<p>Sub-Problem 2: Do pollution level rise as countries industrialize?</p>
+<p>Sub-Problem 3: Do pollution levels decline during post-industrialisation (as economies transition from manufacturing to services)</p>
+<br>
+<p>By looking at GNI/per capita data against PM2.5 data, we can see that that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show a validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the datapoints). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies. </p>
+<br>
+
+<!-- Slideshow container -->
 <div class="slideshow-container">
 
+    <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
-        <div class="numbertext">1 / 9</div>
-        <img src="ds105 pic\education.png" style="width:100%">
-        <div class="text">Education levels vs PM2.5 Concentration in 2018</div>
+      <div class="numbertext">1 / 12</div>
+      <img src="ds105 pic\0001d6.png" style="width:100%">
     </div>
-    
+  
     <div class="mySlides fade">
-        <div class="numbertext">2 / 9</div>
-        <img src="ds105 pic\female_labourforce.png" style="width:100%">
-        <div class="text">Female Labour Force vs PM2.5 Concentration in 2018</div>
+      <div class="numbertext">2 / 12</div>
+      <img src="ds105 pic\0001d7.png" style="width:100%">
     </div>
-    
+  
     <div class="mySlides fade">
-        <div class="numbertext">3 / 9</div>
-        <img src="ds105 pic\GNI.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
-    </div>
-    
-    <div class="mySlides fade">
-        <div class="numbertext">4 / 9</div>
-        <img src="ds105 pic\lifeexpectancy.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
-    </div>
-    
-    <div class="mySlides fade">
-        <div class="numbertext">5 / 9</div>
-        <img src="ds105 pic\poverty.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+      <div class="numbertext">3 / 12</div>
+      <img src="ds105 pic\0001d8.png" style="width:100%">
     </div>
 
     <div class="mySlides fade">
-        <div class="numbertext">6 / 9</div>
-        <img src="ds105 pic\ruralpop.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
+        <div class="numbertext">4 / 12</div>
+        <img src="ds105 pic\0001d9.png" style="width:100%">
     </div>
-    
-    <div class="mySlides fade">
-        <div class="numbertext">7 / 9</div>
-        <img src="ds105 pic\school.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
-    </div>
-    
-    <div class="mySlides fade">
-        <div class="numbertext">8 / 9</div>
-        <img src="ds105 pic\totalpopulation.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
-    </div>
-    
-    <div class="mySlides fade">
-        <div class="numbertext">9 / 9</div>
-        <img src="ds105 pic\urbanpop.png" style="width:100%">
-        <div class="text">GNI per Capita vs PM2.5 Concentration in 2018</div>
-    </div>
-</div>
 
-<div>
-<!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
+    <div class="mySlides fade">
+      <div class="numbertext">5 / 12</div>
+      <img src="ds105 pic\0001da.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">6 / 12</div>
+        <img src="ds105 pic\0001db.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">7 / 12</div>
+        <img src="ds105 pic\0001dc.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">8 / 12</div>
+        <img src="ds105 pic\0001dd.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">9 / 12</div>
+        <img src="ds105 pic\0001de.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">10 / 12</div>
+        <img src="ds105 pic\0001df.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">11 / 12</div>
+        <img src="ds105 pic\00006a.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">12 / 12</div>
+        <img src="ds105 pic\000068.png" style="width:100%">
+    </div>
+
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
+    <span class="dot" onclick="currentSlide(9)"></span>
+    <span class="dot" onclick="currentSlide(10)"></span>
+    <span class="dot" onclick="currentSlide(11)"></span>
+    <span class="dot" onclick="currentSlide(12)"></span>
+  </div>
+
+<h3>PCA Analysis</h3>
 <br>
+<p>We used Principal Component Analysis (PCA) to reduce the dimensionality of our dataset from n=6 to n=2. Inputting 6 variables returns 6 principal components, each showing a linear combination of the 6 variables. Each principal component represents the “direction vector” of the maximal amount of variance in the dataset. Therefore, all principal components will be orthogonal to each other, and we can select the two PCs which retains most information in the data. </p>
+<p>For our model, reducing the dimensionality of our data was a useful tool in visualising our results. Our aim was to create a “development index”, which happened to be the first principal component, and plot PM2.5 concentration against this index. The first principal component would give the “best” linear combination of all our development indicators in one dimension. Fitting a polynomial regression to our data would help us see the correlation between our development index and PM2.5 concentration. </p>
 
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
-    
 </div>
 </body>
 </html>
