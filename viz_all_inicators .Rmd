@@ -1,0 +1,93 @@
+---
+title: "redoing vizualization"
+output: html_document
+date: "2023-01-31"
+---
+```{r}
+#import packages 
+library(ggplot2)
+library(magrittr)
+library(tidyverse)
+library(dplyr)
+library(ggrepel)
+#read cvs  file 
+df<-read_csv("/Users/saratiron/Desktop/ds105/final_dataframe copy.csv")
+
+#rename variables in cvs file since you cannot have varaibles with spaces 
+df_1<-df %>%
+  rename(Country_Code="Country Code",                                                   
+ GNI="GNI per capita, Atlas method (current US$)",                        
+  Labour_force_female="Labor force, female (% of total labor force)",                      
+Life_Expectancy="Life expectancy at birth, total (years)",                           
+ pop_growth="Population growth (annual %)",                                      
+ pop_total="Population, total",                                                 
+poverty="Poverty headcount ratio at national poverty line (% of population)",
+ spending_education="Public spending on education, total (% of GDP)",                    
+ rural_pop="Rural population (% of total population)"  ,                        
+school_enrollment="School enrollment, primary (% net)",                                
+urban_pop="Urban population (% of total population)",                          
+ PM2.5_2018="Total Average PM2.5:")
+colnames(df_1)
+
+# change the data type to all column except Country Code 
+exclude_col<-"Country_Code"
+cols_to_change <- setdiff(names(df_1), exclude_col)
+df_1[cols_to_change] <- lapply(df_1[cols_to_change], function(x) as.numeric(as.character(x)))
+head(df_1)
+
+# Create a list of x-axis variables
+x_vars <- list("GNI" = "GNI per capita, Atlas method (current US$)",
+               "Labour_force_female" = "Labor force, female (% of total labor force)",
+               "Life_Expectancy" = "Life expectancy at birth, total (years)",
+               "pop_growth" = "Population growth (annual %)",
+               "pop_total" = "Population, total",
+                "poverty"="Poverty headcount ratio at national poverty line (% of population)",
+ "spending_education"="Public spending on education, total (% of GDP)",                    
+ "rural_pop"="Rural population (% of total population)",                        
+"school_enrollment"="School enrollment, primary (% net)",                                
+"urban_pop"="Urban population (% of total population)")
+
+# Initialize a list to store the ggplot objects
+viz_list <- list()
+
+# Loop through the x-axis variables
+df_label <- df_1[df_1$Country_Code %in% c("USA", "CHN", "IND","MCO", "AND","RUS", "BRA","POL"),]
+
+# create loop to create scatter plots for different development inidicators and PM2.5 data 
+for (x_var in names(x_vars)) {
+  viz_list[[x_var]] <- ggplot(df_1, aes(x = get(x_var), y = PM2.5_2018)) +
+    geom_point() +
+    stat_smooth(method = loess) +
+    scale_x_log10() +
+    labs(x = x_vars[[x_var]], y = "PM2.5") +
+    geom_text_repel(data = df_label, aes(label = Country_Code), size = 2)  +
+    ggtitle(paste(x_vars[[x_var]], "vs PM2.5 in 2018"))
+
+  viz_list[[x_var]] <- viz_list[[x_var]] + theme(
+    plot.background = element_rect(fill = "white"),
+    panel.background = element_rect(fill = "white"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(colour = "black"),
+    axis.text = element_text(colour = "black"),
+    plot.title = element_text(size = rel(2)))
+ 
+  print( viz_list[[x_var]])
+}
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+

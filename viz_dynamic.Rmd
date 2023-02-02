@@ -1,0 +1,187 @@
+
+```{r}
+# load required packages 
+library(ggplot2)
+library(magrittr)
+library(tidyverse)
+library(dplyr)
+library(ggrepel)
+library(plotly)
+library(gganimate)
+# save csv file as data frame 
+df<-read_csv("final_indicators.csv")
+head(df)
+colnames(df)
+summary(df)
+             
+# rename variables in data frame 
+df_1<-df %>%
+  rename(GNI_2010 ="GNI 2010", GNI_2011 ="GNI 2011",GNI_2012 ="GNI 2012",GNI_2013 ="GNI 2013",GNI_2014 ="GNI 2014", GNI_2015="GNI 2015",GNI_2016 ="GNI 2016",GNI_2017 ="GNI 2017",GNI_2018="GNI 2018",GNI_2019="GNI 2019",Pop_Growth_2010="POP GROWTH 2010", 
+         Pop_Growth_2011="POP GROWTH 2011", 
+         Pop_Growth_2012="POP GROWTH 2012", Pop_Growth_2013="POP GROWTH 2013", 
+         Pop_Growth_2014="POP GROWTH 2014", 
+         Pop_Growth_2015="POP GROWTH 2015", 
+        Pop_Growth_2016="POP GROWTH 2016",
+         Pop_Growth_2017="POP GROWTH 2017",
+         Pop_Growth_2018="POP GROWTH 2018",
+         Pop_Growth_2019="POP GROWTH 2019",
+         PM2.5_2010="2010 Total:",
+         PM2.5_2011="2011 Total:",
+         PM2.5_2012="2012 Total:",
+         PM2.5_2013="2013 Total:",
+         PM2.5_2014="2014 Total:",
+         PM2.5_2015="2015 Total:",
+         PM2.5_2016="2016 Total:",
+         PM2.5_2017="2017 Total:",
+         PM2.5_2018="2018 Total:",
+         PM2.5_2019="2019 Total:",
+         Country_code="Country Code")
+
+# change the structure of the data frame so that you can use it for further analysis, 
+#pivot longer does not work since there are multiple variables attached to year 
+# select relevant country codes 
+df_2010<-select(df_1,Country_code, PM2.5_2010,Pop_Growth_2010,GNI_2010 )
+df_2010<-df_2010%>%
+#change data type top numeric 
+mutate(PM2.5_2010=as.numeric(PM2.5_2010),Pop_Growth_2010=as.numeric(Pop_Growth_2010),GNI_2010=as.numeric(GNI_2010))
+# rename the data 
+ df_2010<-df_2010 %>% 
+   mutate(year="2010")
+ df_2010<- df_2010 %>% rename(GNI=GNI_2010, PM2.5=PM2.5_2010,Pop=Pop_Growth_2010)
+print(df_2010)
+
+ df_2011<-select(df_1,Country_code, PM2.5_2011,Pop_Growth_2011,GNI_2011 )
+df_2011<-df_2011%>%
+mutate(PM2.5_2011=as.numeric(PM2.5_2011),Pop_Growth_2011=as.numeric(Pop_Growth_2011),GNI_2011=as.numeric(GNI_2011))
+
+ df_2011<-df_2011 %>% 
+   mutate(year="2011")
+ df_2011<- df_2011 %>% rename(GNI=GNI_2011, PM2.5=PM2.5_2011,Pop=Pop_Growth_2011)
+print(df_2011)
+
+ df_2012<-select(df_1,Country_code, PM2.5_2012,Pop_Growth_2012,GNI_2012 )
+df_2012<-df_2012%>%
+mutate(PM2.5_2012=as.numeric(PM2.5_2012),Pop_Growth_2012=as.numeric(Pop_Growth_2012),GNI_2012=as.numeric(GNI_2012))
+
+ df_2012<-df_2012 %>% 
+   mutate(year="2012")
+ df_2012<- df_2012 %>% rename(GNI=GNI_2012, PM2.5=PM2.5_2012,Pop=Pop_Growth_2012)
+print(df_2012)
+
+ df_2013<-select(df_1,Country_code, PM2.5_2013,Pop_Growth_2013,GNI_2013 )
+df_2013<-df_2013%>%
+mutate(PM2.5_2013=as.numeric(PM2.5_2013),Pop_Growth_2013=as.numeric(Pop_Growth_2013),GNI_2013=as.numeric(GNI_2013))
+
+ df_2013<-df_2013 %>% 
+   mutate(year="2013")
+ df_2013<- df_2013 %>% rename(GNI=GNI_2013, PM2.5=PM2.5_2013,Pop=Pop_Growth_2013)
+print(df_2013)
+
+df_2016<-select(df_1,Country_code, PM2.5_2016,Pop_Growth_2016,GNI_2016 )
+df_2016<-df_2016%>%
+mutate(PM2.5_2016=as.numeric(PM2.5_2016),Pop_Growth_2016=as.numeric(Pop_Growth_2016),GNI_2016=as.numeric(GNI_2016))
+
+ df_2016<-df_2016 %>% 
+   mutate(year="2016")
+ df_2016<- df_2016 %>% rename(GNI=GNI_2016, PM2.5=PM2.5_2016,Pop=Pop_Growth_2016)
+print(df_2016)
+
+ df_2014<-select(df_1,Country_code, PM2.5_2014,Pop_Growth_2014,GNI_2014 )
+df_2014<-df_2014%>%
+mutate(PM2.5_2014=as.numeric(PM2.5_2014),Pop_Growth_2014=as.numeric(Pop_Growth_2014),GNI_2014=as.numeric(GNI_2014))
+
+ df_2014<-df_2014 %>% 
+   mutate(year="2014")
+ df_2014<- df_2014 %>% rename(GNI=GNI_2014, PM2.5=PM2.5_2014,Pop=Pop_Growth_2014)
+print(df_2014)
+
+ df_2015<-select(df_1,Country_code, PM2.5_2015,Pop_Growth_2015,GNI_2015 )
+df_2015<-df_2015%>%
+mutate(PM2.5_2015=as.numeric(PM2.5_2015),Pop_Growth_2015=as.numeric(Pop_Growth_2015),GNI_2015=as.numeric(GNI_2015))
+
+ df_2015<-df_2015 %>% 
+   mutate(year="2015")
+ df_2015<- df_2015 %>% rename(GNI=GNI_2015, PM2.5=PM2.5_2015,Pop=Pop_Growth_2015)
+print(df_2015)
+
+
+df_2017<-select(df_1,Country_code, PM2.5_2017,Pop_Growth_2017,GNI_2017 )
+df_2017<-df_2017%>%
+mutate(PM2.5_2017=as.numeric(PM2.5_2017),Pop_Growth_2017=as.numeric(Pop_Growth_2017),GNI_2017=as.numeric(GNI_2017))
+
+ df_2017<-df_2017 %>% 
+   mutate(year="2017")
+ df_2017<- df_2017 %>% rename(GNI=GNI_2017, PM2.5=PM2.5_2017,Pop=Pop_Growth_2017)
+print(df_2017)
+
+
+ df_2018<-select(df_1,Country_code, PM2.5_2018,Pop_Growth_2018,GNI_2018 )
+df_2018<-df_2018%>%
+mutate(PM2.5_2018=as.numeric(PM2.5_2018),Pop_Growth_2018=as.numeric(Pop_Growth_2018),GNI_2018=as.numeric(GNI_2018))
+
+ df_2018<-df_2018 %>% 
+   mutate(year="2018")
+ df_2018<- df_2018 %>% rename(GNI=GNI_2018, PM2.5=PM2.5_2018,Pop=Pop_Growth_2018)
+print(df_2018)
+
+df_2019<-select(df_1,Country_code, PM2.5_2019,Pop_Growth_2019,GNI_2019 )
+df_2019<-df_2019%>%
+mutate(PM2.5_2019=as.numeric(PM2.5_2019),Pop_Growth_2019=as.numeric(Pop_Growth_2019),GNI_2019=as.numeric(GNI_2019))
+
+ df_2019<-df_2019 %>% 
+   mutate(year="2019")
+ df_2019<- df_2019 %>% rename(GNI=GNI_2019, PM2.5=PM2.5_2019,Pop=Pop_Growth_2019)
+print(df_2019)
+
+# bind data frames
+big_df <- rbind(df_2010, df_2011, df_2012, df_2013, df_2014, df_2015, df_2016, df_2017, df_2018, df_2019)
+
+
+big_df<-big_df%>%
+mutate(year=as.integer(year))
+print(big_df)
+
+big_df_label <- big_df %>% filter(Country_code =="BRA")
+# create a new column in the data frame to specify color
+big_df$color <- ifelse(big_df$Country_code == "BRA", "red", "black")
+
+# create animated scatter plot of Population  and GNI from 2010-2019  
+GNI_Plot <- ggplot(big_df, aes(x = GNI, y=PM2.5, color=color) ) + geom_point(show.legend = FALSE, alpha = 0.7) + geom_text_repel(data = big_df_label, aes(label = Country_code), size = 4) + scale_size(range = c(2, 12)) + scale_x_log10() + labs(x = "GNI" , y = "PM2.5 µg/m3")+ scale_color_identity()
+
+ GNI_Plot<-GNI_Plot+ transition_time(year) +
+  labs(title = "Year: {frame_time}")
+
+animate(GNI_Plot, width=700, height=600)
+anim_save('plot_gni_pm2.5.new.gif')
+
+
+# create animated scatter plot of Population  and PM2.5 from 2010-2019  
+Pop_Plot <- ggplot(big_df, aes(x = Pop, y = PM2.5,color=color)) +
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  geom_text_repel(data = big_df_label, aes(label = Country_code), size = 4) +
+  labs(x = "Population growth (annual %)", y = "PM2.5 µg/m3") +
+  ggtitle("Population growth vs PM2.5") +
+  ggtitle("GNI per capita vs PM2.5 µg/m3 in 2010-2019")+ scale_color_identity()
+
+Pop_Plot <- Pop_Plot + transition_time(year) +
+  labs(title = "Year: {frame_time}")
+
+animate(Pop_Plot, width = 700, height = 600)
+anim_save("plot_pop_pm2.5.new.gif")
+
+# create 3d plot displaying GNI, Population, and PM2.5  
+fig <- plot_ly(df_2010, x = ~GNI, y = ~Pop, z = ~PM2.5)
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'GNI'),
+                     yaxis = list(title = 'Pop growth'),
+                     zaxis = list(title = 'PM2.5')))
+# print data frame 
+print(fig)
+
+htmlwidgets::saveWidget(as_widget(fig), "index.html")
+```
+
+
+
+
+
