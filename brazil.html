@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" type="jpg" href="ds105 pic\globe.jpg"/>
+<title> Morpheus - The environnmental Kuznet's Curve </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<!-- Navigation (to change the style) -->
+<style>
+    h1 {
+        font-weight: normal;
+        color: black;
+        font-size: 100px;
+        text-align: center;
+        font-family: Luminari, sans-serif;
+      }
+  
+    h3 {
+        font-weight: bold;
+        color: black;
+        font-size: 27px;
+        text-align: center;
+        font-family: Luminari, sans-serif;
+      }
+      
+    a:link {
+        font-size: 14px;
+        background-color: transparent;
+      }
+      
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+  
+    p {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin: 10px;
+        margin-left: 150px;
+        margin-right: 150px;
+        color:black;
+      }
+    
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    } 
+     /* Three image containers (use 25% for four, and 50% for two, etc) */
+  .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+    .column1 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+    /* Clear floats after image containers */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<script src="script.js" type="text/javascript"></script>
+
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+    <a href="script.js" onclick="w3_close()"
+    class="w3-bar-item w3-button">Close Menu</a>
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Motivation</a>
+    <a href="analysis.html" onclick="w3_close()" class="w3-bar-item w3-button">Multiple Country Analysis</a>
+    <a href="brazil.html" onclick="w3_close()" class="w3-bar-item w3-button">Brazil Analysis</a>
+  
+  </nav>
+  
+  <!-- Top menu -->
+  <div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+      <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+      <div class="w3-center w3-padding-16">DS105M Project</div>
+    </div>
+  </div>
+  
+  <br>
+  <br>
+  <br>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+    <div class="w3-center">
+    <h4>A MORPHEUS PRODUCTION</h4>
+    <h1 class="w3-xxxlarge w3-animate-bottom" style="color:white">BRAZIL ANALYSIS</h1>
+    <div class="w3-padding-32">
+        <h2 class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:900;">EVOLUTION OF INDUSTRIALISED COUNTRIES OVER TIME</h2>
+    </div>
+</header>
+
+<h3>Sub-Problem 5: Can we witness the Kuznets curve by looking at the evolution of industrializing countries over time? </h3>
+<br>
+<p>Because we found limited evidence of the Environmental Kuznets Curve when doing cross country comparisons, we wanted to further investigate the issue. In our research so far, we did cross country analysis.  One of the potential reasons for not seeing the curve, is that counties have different characteristics that could impact the PM2.5 concentration, through other economic channels than development. As such there may be country fixed effects that we do not account for. We specifically choose to focus on Brazil, because it went through different stages of development in a relatively short period of time. This would allow us to cover a large span of development, with less data, which is useful since pm2.5 data is not available on a large time horizon. </p>
+<br>
+<p>Initially, we wanted to do a times series analysis of the data, to assess the strength of the relationship between PM2.5 and economic development, measured by GDP/capita. However, since there is limited data on PM2.5.  We would essentially only have 12 observations in the time series. The minimum recommended for a time series regression for a  sample is 20 observations. Moreover, PM2.5 data is likely to be correlated from one period to the next. These issues would induce significant bias and could result in spurious correlation results. Therefore, we ultimately decided against doing a time series since it would likely not result in meaningful conclusions about the EKC. </p>
+<br>
+<p>When researching empirical literature, we can come across a paper on the relationship between Pm2.5 and economic development in China.. The authors used a Spatial Durbin model to examine the relationship between PM2.5 data and economic growth and pollution in 13 cities  of the BTH region from 1998 to 2016. As such, we choose a different research approach inspired by the The environmental Kuznets curve for PM2.5 pollution in Beijing- Tianjin-Hebei region of China: A spatial panel data approach paper.  We choose to look at Brazil, rather than through time, across regions since there is a significant level of variation in development across the country.</p>
+<br>
+<h3>Data used: </h3>
+<br>
+<p>For the intertemporal analysis of Brazil: </p>
+<ol style="color:black; font-size:20px; margin:10px">
+    <li>Economic development: Since in the PCA, GDP was a strong indicator, we used the IMF API to collect GDP/capita data on Brazil from 1980-2021. We used the World Bank API to gather data on PM2.5 concentration, which includes data for 1990, 1995, 2000, 2005, 2010-2017. </li>
+    <li>PM2.5: We used the World Bank API, which we also used in the first part of the research. </li>
+</ol>
+<br>
+<h3>Data Wrangling:</h3>
+<br>
+<p>Intertemporal analysis: </p>
+<br>
+<p>Below is an example of the call used to get the GDP/capita data,and PM2.5 data.  We merged the data frames by date so that we can use them to create visualisations as well as scatterplots.</p>
+
+<img src="ds105 pic\code1.png" alt="Code" class="center">
+<img src="ds105 pic\code2.png" alt="Code" class="center">
+<img src="ds105 pic\code3.png" alt="Code" class="center">
+
+<br>
+
+<p>We used ggplot2 in R, to create scatter plots that would allow us to visualise the relationship between the variables of interest, GDP/capita and PM2.5, across time. </p>
+<br>
+<figure>
+    <img src="ds105 pic\Scatterplot1.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 1: Scatterplot showing the the evolution of GDP per capita from 1980-2021</figcaption>
+</figure>
+<br>
+<figure>
+    <img src="ds105 pic\Scatterplot1.png" alt="Scatterplot showing the evolution of PM2.5 from 1980-2021" class="center">
+    <figcaption  style="color:black; font-size:20px">FFigure 2: Scatterplot showing the evolution of PM2.5 from 1980-2021</figcaption>
+</figure>
+<br>
+<p>Visually, we can infer the  EKC relation. For low per levels of development, there is more pollution, while starting from 2010, we see that as GDP/capita increases, Pm2.5 levels also fall, with somewhat of a lagged effect- since Brazil experiences a contraction of GDP per capita but PM2.5 levels continue to go down. </p>
+<p>However, since there is  not enough data available for PM2.5, we were unable to  continue with our initial time series analysis. We would essentially only have 12 observations in the time series. The minimum recommended for a time series regression for a  sample is 20 observations. Moreover, PM2.5 data is likely to be correlated from one period to the next. These issues would induce significant bias and could result in spurious correlation results. Therefore, we ultimately decided against doing a time series since it would likely not result in meaningful conclusions about the EKC. </p>
+<br>
+<h3>Cross-country Analysis</h3>
+<br>
+<h3>Data:</h3>
+<br>
+<ol style="color:black; font-size:20px; margin:10px">
+    <li>PM2.5- We used data from the Socioeconomic Data and Applications Center (SEDAC2), presented as annual global surface concentrations (mi- crograms per cubic metre, mg/m3) of mineral dust and sea-salt filtered PM2.5 over the period of 1998-2016. The data set contains information on 770 Brazilian cities. Of these Brazilian cities, we selected a random sample of 30 cities.</li>
+    <li>Economic development: We choose to focus on GDP/capita since there is no municipality level data on the other development indicators used in the first part of our research. We used the Basedosdados data set to extract  municipality level GDP/capita. </li>
+    <li>Cities: We choose to focus on the 26 regional capitals,since they are spread across Brazil so this minimises the effects of PM2.5 spreading across cities. Moreover, they are spread across a range of economic development, minimising the changes that we get cities from only one side of the curve. </li>
+</ol>
+
+<br>
+<h3>Data Wrangling</h3>
+<br>
+<p>To get municipality level GDP/capita we combined two data sets from the Basedosdados, and matched them on the city id. This was necessary since the dataset containing gdp/capita did not include city names. </p>
+<br>
+<img src="ds105 pic\code4.png" alt="Code" class="center">
+<p>To get city level PM2.5 data we filtered the data set  to only include values for Brazil. </p>
+<br>
+<img src="ds105 pic\code5.png" alt="Code" class="center">
+<br>
+<p>For the capital cities, we manually imputed the names of the capital cities. </p>
+<br>
+<img src="ds105 pic\code6.png" alt="Code" class="center">
+<br>
+<p>We encountered difficulties when trying to match the data sets, since the city  names in the GDP/capita and Pm2.5 datasets are spelled differently. As such we had to use a fuzzy match . However, since the results returned were not perfect we had to manually create a data set. </p>
+<br>
+<img src="ds105 pic\code7.png" alt="Code" class="center">
+<br>
+<p>This was manageable since we chose to focus on the capital cities, but it limits the possibility of extending the research to the whole data set of 770 cities. Moreover, one of the capital cities did not have PM2.5 data which induced missing data. </p>
+<br>
+<h3>Results</h3>
+<br>
+<figure>
+    <img src="ds105 pic\Scatterplot3.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 1: Scatterplot showing the the evolution of GDP per capita from 1980-2021</figcaption>
+</figure>
+<br>
+<p>In the scatterplot, we can see the relationship between GDP/Capita and Pm2.5 in individual capital. The data seems to display a curved relationship which would suggest the EKC relation. However, this is mostly driven by two data points, as we can see that most of the data is concentrated in low levels of capital, but spans the Pm2.5 area quite a bit. So if we would exclude the two data points, it would no longer seem like there is a coorelation. Therefore, looking at city level data also does not seem to yield meaningful data, in regard to the Environmental Kuznets curve. </p>
+<br>
+<h3>Conclusion</h3>
+<p>Our research aims to uncover the truth behind the Environmental Kuznets Curve. To do so, we conducted cross-country and cross-city comparisons by plotting different environmental indicators against PM2.5 levels in a large set of countries. Unfortunately, our findings showed no evidence of the curve.</p>
+<p>We also tried to create a development index through a principal component analysis regression to better understand the variation of PM2.5 in our sample. However, this too failed to produce meaningful evidence of the EKC relationship.</p>
+<p>As our analysis of the static world data set yielded limited results, we decided to focus on Brazil and study its fixed effects. While initial results from our analysis of GDP and PM2.5 data over time were promising, a lack of data forced us to pivot and conduct a spatial analysis of the relationship between GDP/capita and PM2.5 in Brazilian capital cities. Despite our efforts, we still found limited evidence of the Environmental Kuznets Curve.</p>
+<p>Since our research has its limitations, we can’t exclude the possibility of the Kuznets Curve. However, based on our analysis, it is likely that the relationship does not hold. This has significant implications for policy-makers, as it suggests that simply relying on industrialization alone is not enough to address environmental concerns. Instead, a more comprehensive approach is needed to balance economic growth with environmental protection.</p>
+<br>
+<h3>What could be next? </h3>
+<br>
+<p>The climate crisis is a crucial issue that demands our immediate attention, and to tackle it effectively, we need to have a deep understanding of the factors that can drive sustainable change in the environment. To gain a more complete picture of the Environmental Kuznets Curve dynamics, we recommend extending our research efforts. Specifically, by continuing our spatial analysis of Brazilian cities and incorporating multiple years of data, we can conduct a temporal spatial analysis to better understand the relationship between GDP and PM2.5. This will provide valuable insights that could inform the development of effective policies aimed at protecting the environment.</p>
+
+
+<h3>Back:</h3>
+
+<div class="row">
+  <div class="column1">
+    <a href="index.html">
+      <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Environmental_Kuznets_Curve.png" alt="Multiple Country Analysis" style="width:75%; height:250px"> 
+      <figcaption style="color:black; font-size:20px">Motivation</figcaption>
+      </figure>
+    </a>
+  </div>
+  <div class="column1">
+    <a href="analysis.html">
+      <figure>
+      <img src="ds105 pic\multiplecountry.PNG" alt="Brazil Analysis" style="width:75%; height:250px">
+    <figcaption style="color:black; font-size:20px">Multiple Country Analysis</figcaption>
+    </figure>
+    </a>
+  </div>
+
+
+  

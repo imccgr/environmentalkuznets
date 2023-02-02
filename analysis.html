@@ -14,7 +14,7 @@
 <style>
     h1 {
         font-weight: normal;
-        color: white;
+        color: black;
         font-size: 100px;
         text-align: center;
         font-family: Luminari, sans-serif;
@@ -22,7 +22,7 @@
   
     h3 {
         font-weight: bold;
-        color: white;
+        color: black;
         font-size: 27px;
         text-align: center;
         font-family: Luminari, sans-serif;
@@ -36,7 +36,7 @@
     body {
         margin: 0;
         padding: 0;
-        background-color: black;
+        background-color: white;
       }
   
     p {
@@ -44,7 +44,9 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 20px;
         margin: 10px;
-        color:white;
+        margin-left: 150px;
+        margin-right: 150px;
+        color:black;
       }
     
     .center {
@@ -58,6 +60,11 @@
   .column {
         float: left;
         width: 33.33%;
+        padding: 5px;
+    }
+    .column3 {
+        float: left;
+        width: 100%;
         padding: 5px;
     }
   
@@ -89,7 +96,7 @@
         width: auto;
         margin-top: -22px;
         padding: 16px;
-        color: white;
+        color: black;
         font-weight: bold;
         font-size: 18px;
         transition: 0.6s ease;
@@ -134,14 +141,14 @@
         height: 15px;
         width: 15px;
         margin: 0 2px;
-        background-color: #bbb;
+        background-color: black;
         border-radius: 50%;
         display: inline-block;
         transition: background-color 0.6s ease;
     }
 
     .active, .dot:hover {
-        background-color: #717171;
+        background-color: black;
     }
 
     /* Fading animation */
@@ -158,19 +165,32 @@
   
 <script src="script.js" type="text/javascript"></script>
 
-  
-<!-- Navigation -->
-<nav>
-    <a href="index.html">MOTIVATION</a>
-    <a href="analysis.html">MULTIPLE COUNTRY ANALYSIS</a>
-    <a href="brazil.html">BRAZIL ANALYSIS</a>
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+    <a href="script.js" onclick="w3_close()"
+    class="w3-bar-item w3-button">Close Menu</a>
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Motivation</a>
+    <a href="analysis.html" onclick="w3_close()" class="w3-bar-item w3-button">Multiple Country Analysis</a>
+    <a href="brazil.html" onclick="w3_close()" class="w3-bar-item w3-button">Brazil Analysis</a>
 </nav>
+  
+  <!-- Top menu -->
+  <div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+      <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+      <div class="w3-center w3-padding-16">DS105M Project</div>
+    </div>
+  </div>
+  
+  <br>
+  <br>
+  <br>
 
 <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
     <div class="w3-center">
     <h4>A MORPHEUS PRODUCTION</h4>
-    <h1 class="w3-xxxlarge w3-animate-bottom">MULTIPLE COUNTRY ANALYSIS</h1>
+    <h1 class="w3-xxxlarge w3-animate-bottom" style="color:white">MULTIPLE COUNTRY ANALYSIS</h1>
     <div class="w3-padding-32">
         <h2 class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:900;">INITIAL DATA WRANGLING AND ANALYSIS</h2>
     </div>
@@ -181,40 +201,42 @@
 <div class="w3-container">
     <hr>
     <div class="w3-center">
-      <h2 style = "font-weight: bold; color:white">DATA</h2>
+      <h2 style = "font-weight: bold; color:black"></h2>
       <p w3-class="w3-large">Through our data analysis, there are several questions we want to answer.</p>
     </div>
   <div class="w3-responsive w3-card-4">
   <table class="w3-table w3-striped w3-bordered">
     <tbody>
      <tr>
-        <td style = "font-size:20px; color: white">Which World Bank indicators best predict the level of development so that we can use them in our development index?</td>
+        <td style = "font-size:20px; color: black">How well does our hypothesis hold using our development index (PCA)?</td>
     </tr>
     
     <tr>
-        <td style = "color:black; font-size:20px"> Do pollution level rise as countries industrialize? </td>
-
+        <td style = "color:black; font-size:20px"> Which development indicators best predict a U-shaped Environmental Kuznets Curve?</td>
     </tr>
 
     <tr>
-        <td style = "font-size:20px; color:white">Do pollution levels decline during post-industrialisation (as economies transition from manufacturing to services)</td>
+        <td style = "font-size:20px; color:black">What can we learn from using panel data?</td>
     </tr>
 
     <tr>
-        <td style = "color:black; font-size:20px">To what degree does the overall shape of the Kuznets curve hold in the present day?</td>
-    </tr>
-
-    <tr>
-        <td style = "font-size:20px; color:white">Can we witness the Kuznets curve by looking at the evolution of industrialising countries over time?</td>
+        <td style = "color:black; font-size:20px">Does the Kuznets curve hold for micro-level data?</td>
     </tr>
     </tbody>
   </table>
   </div>
 
 <br>
-<h3>To measure economic development, we require various development indicators.</h3>
-<p> In order to make our data easier to analyse, our development indicator data comes from a single year (2018), which has the least missing data across the indicators we have selected. We select 10 development indicators from the Health, Nutrition and Population statistics, which are shown below:</p>
-<ol style="color:white; font-size:20px; margin:10px">
+
+<h3>Our data</h3>
+<br>
+
+<p>Our research uses PM2.5 concentration data as a proxy for environmental degradation. PM2.5 refers to fine particulate matter, defined as particles that are less than 2.5. micrometers or less in diameter, and is emitted through fuel combustion. PM2.5 is an air pollutant that is a concern for people’s health at a high level, as its particles can be inhaled, depositing on airways and lungs, causing tissue damage and lung inflammation. Exposure to high concentration levels can cause an array of health issues including reduced life expectancy, increased hospital admissions for heart or lung causes, and acute and chronic bronchitis. We choose to look at PM2.5, instead of another indicator of pollution since this is recorded through satellites, and there is data available for a broad set of countries. Moreover, since its satellite data, the data quality does not differ with the individual country statistical agencies, thus it allows our research to be less biassed- especially towards poorer countries that have worse statistical agencies. </p>
+<br>
+<p>To measure economic development, we require various development indicators. Beyond GDP, economic development relies on other social indicators, namely education and health statistics. We selected 10 development indicators from the World Bank’s Health, Nutrition and Population, using data from 2010-2019 on 175 countries.</p>
+<br>
+<p> Below are the indicators we selected:</p>
+<ol style="color:black; font-size:20px; margin:10px">
     <li>Ratio of urban population to total population (%)</li>
     <li>School enrolment (% of population)</li>
     <li>Public spending on education, total (% of GDP)</li>
@@ -229,141 +251,147 @@
 
 <br>
 
+<h3>Methodology </h3>
+<br>
+<p>We used Jupyter Notebook and Python for data cleaning, and then Python and R packages to analyse our data and create data visualisations.</p>
+<br>
+<p>Our first objective was cleaning and merging multiple datasets coherently. During the merging process, we ensured that the list of countries in both datasets matched each other, such that development data was correctly matched to a country’s PM2.5 concentration. Then, we cleaned the columns of the dataset by eliminating the development indicators with too much missing data. We cleaned the rows of the dataset by using the dropna() function, which enabled us to efficiently get rid of countries with missing values. We also converted data types where applicable. The dimensions of our main dataframe went from 196 rows by 20 columns to 175 rows by 17 columns. The number of rows are the number of countries, and the number of columns is the sum of our 6 remaining development indicators, and yearly PM2.5 concentration between 2010-2019. </p>
+<br>
+<p>Then, the first part of our research involved using Principal Component Analysis to create a “development index” using the first principal component. Using PCA is a useful tool to reduce the dimensionality of datasets and create 2D visualisations. In our case, we used the first principal component as a proxy for development, as features of all 6 indicators could be combined into 1 “index”. We then plotted PM2.5 concentration level against the first principal component and added a polynomial regression line. </p>
+<br>
+<p>The second part of our initial research involved looking at the relationship between PM2.5 concentration and individual development indicators. This involved using a multi-linear quadratic log regression model. Using R, we created scatterplots of PM2.5 concentration against each development indicator. We used a logarithmic scale on certain indicators to increase the legibility of our data. We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the data. We also created animated plots using panel data over 2010-2019, focusing on the behaviour of key economies at different stages of development. </p>
+<br>
+
 <h3>Obtaining Data</h3>
-
-<img src="ds105 pic\obtainingdatawho.png" alt="World Map PM2.5 concentration from the W.H.O" class="center">
-
 <br>
-
-<p>The WHO (World Health Organization) provides yearly PM2.5 data between 2010-2019. 
-    The pollution indicator code is SDGPM25, and the data is split across country (SpatialDIM) and across time (TimeDim). 
-    Within each countries, air pollution is split in 5 categories: “Total”, “City”, “Rural”, “Town” and “Urban”. 
-    The data corresponds to population weighted annual mean levels of PM2.5. </p>
-<br>
+<p>The WHO (World Health Organization) provides yearly PM2.5 concentration data between 2010-2019. The pollution indicator code is SDGPM25, and the data is split across country (SpatialDIM) and across time (TimeDim). Within each country, air pollution is split in 5 categories: “Total”, “City”, “Rural”, “Town” and “Urban”. The data corresponds to population weighted annual mean levels of PM2.5 concentration, measured in μg/m^3. Figure 1 show the raw PM2.5 dataset and a snippet for one country (Afghanistan) and one year (2010). We wanted to do cross country comparisons, so we  chose to look at “Total” concentration over 10 time periods for all 195 countries. We chose “Total” because this makes for more accurate comparisons between countries as each country has a different composition of urban and rural areas. </p>
 
 <p>Fig 2 show the raw PM2.5 dataset and a snippet for one country (Afghanistan) and one year (2010).</p>
 
+<br>
+
 <figure>
-    <img src="ds105 pic\datafromWHO.png" alt="Data from the WHO PM2.5 database" class="center">
-    <figcaption  style="color:white; font-size:20px">Fig 2: Data from the WHO PM2.5 database</figcaption>
+    <img src="ds105 pic\rawdatawho.png" alt="Raw data from the WHO PM2.5 API (Afghanistan, 2010)" class="center" height="50px" width="200px">
+    <figcaption  style="color:black; font-size:20px">Fig 1: Raw data from the WHO PM2.5 API (Afghanistan, 2010)</figcaption>
 </figure>
 
-<p>For simplicity, we wanted to extract “Total” concentration over 10 time periods for all 195 countries.</p>
+<br>
 
-<p>We realised that our initial code for extracting PM2.5 (using a sequence generation method) was wrong. With 9450 data points and 195 countries, there were less than 50 data points per country, which meant there was some missing data. As such, using the list comprehension tool and vectorised operations, we made it simpler to change to other categories (like “Town” or “Urban” as a substitute)</p>
+<p>We then checked the values we got with the original json file, and realized they were incorrect. We then checked for missing data values and found that with 9450 data points and 195 countries, there were less than 50 data points per country, which meant there was some missing data since each country had 5 locations over 10 years. We then went back to the documentation for the API and through trial and error (since the documentation was very vague) found a way to filter for just the total values for each country which didn’t have missing data in it. As such, using the list comprehension tool and vectorised operations through the pandas library, we also made our code faster. </p>
 <br>
 <p>This resulted in the following dataset (196 rows * 11 columns):</p>
 
-<img src="ds105 pic\dataset1.png" alt="PM2.5 data set" class="center" style="text-align: center">
+<figure>
+    <img src="ds105 pic\Dataset for PM2.5 concentration.png" alt=" Dataset for PM2.5 concentration, 2010-2019, 195 countries" class="center" height="200px" width="700px">
+    <figcaption  style="color:black; font-size:20px">Fig 2: Dataset for PM2.5 concentration, 2010-2019, 195 countries</figcaption>
+</figure>
 
 <br>
-<p>For the development data, our raw dataset looked like this:</p>
-<img src="ds105 pic\devdataraw.png" alt="Development Data Raw Dataset" class="center">
+<p>For the development indicators, we downloaded data from the World Bank’s database as a CSV file and cleaned the data on python.</p>
 <br>
-<p>As shown above, the development dataset was in ‘long’ format. Merging with the air pollution dataframe enabled us to change the dataset to ‘wide’ format. This resulted in the following final dataframe:</p>
-
-<img src="ds105 pic\finaldataframe.png" alt="Final DataFrame" class="center">
-<img src="ds105 pic\finaldataframe2.png" alt="Final DataFrame" class="center">
-
+<figure>
+    <img src="ds105 pic\devdataraw.png" alt="Development Data Raw Dataset" class="center">
+    <figcaption  style="color:black; font-size:20px">Development Data Raw Dataset
+    </figcaption>
+</figure>
 <br>
 <h3> Data Wrangling</h3>
 <br>
+<p>We realised that 4 of our indicators (School Enrolment, Public Spending on Education, Poverty headcount ratio, size of manufacturing sector) had less than 100 datapoints (out of 195 countries), so keeping them would mean working with a much smaller pool of countries. This could also bring bias into our data, as low income countries are generally more likely to have missing data than high income countries. As such, we reduced the number of development indicators from 10 to 6. With these, we dropped countries with missing values across the indicator list, reducing the number of countries from 195 to 175. As shown above, the development dataset was in ‘long’ format. Merging with the air pollution dataframe enabled us to change the dataset to ‘wide’ format. We used the df.merge (on) function to merge both datasets on “country code”.</p>
 
-<p>The first part of our analysis was focused on Principal Component Analysis (PCA) of the development indicators.</p>
-<br>
-<p>We realised that 4 of our indicators (School Enrolment, Public Spending on Education, Poverty headcount ratio, size of manufacturing sector) had less than 100 datapoints (out of 195 countries), so we reduced our scope to 6 indicators. With these, we dropped the NaN values which showed missing data for the whole indicator list. Note that, if a country had a missing indicator, it was likely that 2+ indicators were missing as well. This reduced the number of countries to 175, which we deemed an acceptable level. </p>
-
-<img src="ds105 pic\reducingcountries.png" alt="Reducing countries code" class="center">
-
-<br>
-
-<p>The second part of our research was focused on data visualisations of the evolution  of PM2.5 concentration across time. We compared PM2.5 levels with two indicators, GNI/capita and population growth across time. We extracted time series data for the development indicators and cleaned it using Python, as before. </p>
-<br>
-<p>For PM2.5 Data:</p>
-<img src="ds105 pic\cleaningpm2.5.png" alt="Cleaning PM2.5 data" class="center">
-<br>
-
-<p> Result:</p>
-<img src="ds105 pic\resultpm2.5dataframe.png" alt="PM.5 dataframe after cleaning" class="center">
+<figure>
+    <img src="ds105 pic\reducingcountries.png" alt="Data cleaning for development indicators, changed to “wide” format" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 4: Data cleaning for development indicators, changed to “wide” format
+    </figcaption>
+</figure>
 
 <br>
-<p>For indicators data:</p>
-<img src="ds105 pic\indicatorsdatacode.png" alt="Cleaning indicators data" class="center">
 
+<p>As such, our final dataframe was 175 rows by 17 columns, which we could then use to carry out data visualisations:</p>
 <br>
-<p>Merging:</p>
-<img src="ds105 pic\mergingcode.png" alt="Merging code" class="center">
+
+<figure>
+    <img src="ds105 pic\mergeddataframe.png" alt="snippet of merged dataframe" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 5: snippet of merged dataframe 
+    </figcaption>
+</figure>
 
 <br>
 <h3>Main Limitations:</h3>
-<ol style="color:white; font-size:20px; margin:10px">
-    <li>Our analysis only focuses on the “Total” PM2.5 concentration. We are limiting the scope of our research to looking at country-country differences, rather than regional analysis. To combat this, we choose to maintain as many countries in our analysis, to incorporate all stages of development. </li>
-    <li>For simplicity, we chose to ignore the countries with missing data (NaN values) and indicators with too much missing data. Less developed countries, on average, have lower quality data, since their statistical agencies are not as developed. This means that the  countries with the most NA values are less developed. This is likely to induce bias in our research. We could have replaced these data with estimates, taking into account parameters such as population and GDP or comparing with similar economies. However, given the limited timeline  of this project this was not as feasible. </li>
-    <li>We chose to take a static perspective on our development variables. As such, we picked a random year (2018) to fix the “level of development”. As such, we assumed similar levels of GDP across the 2010-2019 period. For developing countries, this is likely to understate the level of development across time and may be a source of bias. Similar development levels may “flatten” the curve during the industrialisation stage (where countries’ level of development changes fastest), which would weaken the validity of the Kuznets curve. </li>
-    <li>Our data ignores the effect of inequalities on levels of air pollution. One improvement could have been to use development factors that showed the effects of inequality on air pollution levels. Intuitively, larger inequalities (not reflected in GNI/capita) could reflect lower development level, and higher rates of pollution (more GHG emissions if people use non-renewable energy forms for heating homes, for example). ? </li>
-    <li>Our data does not take into account income inequality. Thus we assume the effects of air pollution to be homogenous across the whole population of the country, which is likely not the case- since poorer areas may be more at risk from </li>
-    <li>The country level analysis, ignores redistributional effects.</li>
-    <li>We do not gather data on income inequality. Income inequality is also an important factor that can explain pollution. Arguably, countries with a more unequal distribution of wealth, can be less developed?</li>
+<ol style="color:black font-size:20px; margin:10px">
+    <li>Our primary analysis only focuses on PM2.5 concentration levels over a short time period (2010-2019), which are the limits of the WHO’s PM2.5 data. Since changes in economic development typically occur over longer time periods, our research would have benefited from having access to historical PM2.5 data (e.g. 1980-). </li>
+    <li>For simplicity, we chose to ignore the countries with missing data (NaN values) and indicators with too much missing data. This may introduce bias into our data, as low income countries may have disproportionately more missing data than high income countries. As shown in Angrist et al. (2021), “limited statistical capacity, the use of outdated data and methods, the large share of the agricultural sector, the informal economy and limited price data” are potential reasons why. However, our data cleaning only reduced the scope of countries by 20, going from 195 to 175 countries.</li>
+    <li>For the PCA analysis, we used data from a single year (2018) to generate a plot of PM2.5 concentration against development level. This might make our model inaccurate: if 2018 was an “outlier” year for multiple countries, then this could distort the shape of our Kuznets curve. Hence, we replicated our plot using PM2.5 data from 2010, 2015 and 2019. </li>
+    <li>Our data does not take account for income inequality, which can be factored into determining a country’s economic development. Thus, in very unequal societies, GNI/capita may overstate the level of economic development, which could reduce the accuracy of our development index.  </li>
 </ol>
 <br>
 <h3>Exploratory data analysis:</h3>
 <br>
+<p>We started by looking at changes in the distribution of PM2.5 concentration over time. </p>
 
 <figure>
     <img src="ds105 pic\distributionofPM25.png" alt="Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time." class="center">
-    <figcaption  style="color:white; font-size:20px">Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time.</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time.</figcaption>
 </figure>
 
 <br>
 
+<p>As the boxplot shows, between 2010 and 2019, PM2.5 across the world have stayed at similar levels. Median air pollution has declined from 21.3 μg/m^3 to 18.8 μg/m^3. The standard error increased from 1.05 to 1.11 between 2010 and 2015, but declined again to 1.04 in 2019.</p>
+<br>
 <figure>
     <img src="ds105 pic\histogram.png" alt="Fig 5: Histogram of world PM2.5 concentration data across time." class="center">
-    <figcaption  style="color:white; font-size:20px">Fig 5: Histogram of world PM2.5 concentration data across time.</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 5: Histogram of world PM2.5 concentration data across time.</figcaption>
 </figure>
 
 <br>
-<h3>Methodology</h3>
+<p>The histogram above shows the change in the distribution of PM2.5 levels across classes. Between 2010 and 2019, more than 10 countries reduced their PM2.5 levels below 10 μg/m^3. At the other tail of the distribution, countries with very high PM2.5 levels have seen a decline in their pollution levels, shifting towards the middle of the distribution.</p>
 <br>
-<p>We used Jupyter Notebook and Python for data cleaning, and then Python and R packages to analyse our data and create data visualisations.</p>
+<figure>
+    <img src="ds105 pic\newpiechart.png" alt=" Pie charts of PM2.5 levels across time" class="center">
+    <figcaption  style="color:black; font-size:20px">Fig 6: Pie charts of PM2.5 levels across time.</figcaption>
+</figure>
 <br>
-<p>Our first objective was cleaning and merging multiple datasets coherently. This involved getting rid of missing values and columns with too much missing data (as discussed above). During the merging process, we ensured that the list of countries in both datasets matched each other, such that development data was correctly matched to a country’s PM2.5 concentration. We also converted data types where applicable. We tried to preserve as much of our data as possible, in order to arrive at meaningful conclusions using data visualisation.</p>
+<figure>
+    <img src="ds105 pic\pm25levelsworld.gif" alt="Animated map of PM2.5 concentration levels between 2010-2019" class="center">
+    <figcaption  style="color:black; font-size:20px">Fig 7: Animated map of PM2.5 concentration levels between 2010-2019</figcaption>
+</figure>
 <br>
-<p>Then, the first part of our research involved using Principal Component Analysis to reduce the dimensionality of our data whilst preserving the most information. By using a PCA package on python, we transformed our 6 development indicators into 6 principal components. We plotted the explained variance ratio and cumulative explained variance to narrow down the 2 best princ-ipal components. </p>
-<br>
-<p>We used python to create plots of PM2.5 concentration data against each PCA component, which would show to what extent our data behaved like a Kuznets curve. We replicated this across 3 period (2010, 2015, 2019) to see broad changes in pollution levels. Then we used a quadratic PCA regression model for each PCA component. Since all principal components are orthogonal to each other, their correlation will be zero, so a multi-variate regression would not be appropriate. </p>
-<br>
-<p>The second part of our research involved restricting our 6 development indicators to just 2 variables. </p>
-<br>
-<p>This involved using a multi-linear quadratic log regression model. We determined the 2 best indicators, which were population growth and GNI per capita because of their p-values (p < 0.05). Using R, we created scatterplots of PM2.5 concentration against each development indicator. We used a logarithmic scale on certain indicators to increase the legibility of our data.</p>
-<br> 
-<p> We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the data. This showed a 95% confidence interval to the data. We also created a 3D plot showing the relationship between our two “best” development indicators and PM2.5 concentration.</p>
-<br>
-<p> Lastly, we used ggplot to create animated scatter plots of PM2.5 concentration against our 2 indicators. We showed the behaviour of countries across 2010-2019, using time series data for both variables. This enabled us to track the path of specific countries over time (both developing and developed economies). </p>
-<br>
+<p>Geographically, most of the countries with high PM2.5 concentration are Asia, the Middle East and Sub-Saharian Africa. </p>
 
+<br>
 <h3>Results</h3>
-<p>We realise that the Kuznets curve is a primarily theoretical relationship between development stage and level of pollution. We make certain assumptions to simplify the data we are working with, which may reduce the accuracy of the shape of our Kuznets curve. </p>
 <br>
-<p>Broad Overview:</p>
+<p>PCA Analysis: How well does our hypothesis hold using our development index (PCA)?</p>
+<p>We used Principal Component Analysis (PCA) to reduce the dimensionality of our dataset from n=6 to n=2. Inputting 6 variables returns 6 principal components, each showing a linear combination of the 6 variables. Each principal component represents the “direction vector” of the maximal amount of variance in the dataset. Therefore, all principal components will be orthogonal to each other, and we can select the first principal component, which retains most information about the data</p>
 
 <figure>
-    <img src="ds105 pic\pm25levelsworld.gif" alt="PM2.5 levels accross the globe" class="center">
-    <figcaption  style="color:white; font-size:20px">PM2.5 levels accross the globe</figcaption>
+    <img src="ds105 pic\varianceratio.png" alt="Explained variance ratio, by principal component" class="center">
+    <figcaption  style="color:black; font-size:20px">Fig 8: Explained variance ratio, by principal component</figcaption>
+</figure>
+<br>
+<p>The explained variance of the first principal component was 0.414, the second 0.195, the third 0.172 and so on. The first principal component is “best” as it encapsulates the most information about the variance in the data. </p>
+
+<figure>
+    <img src="ds105 pic\PCA1.png" alt="Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 8: Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis </figcaption>
 </figure>
 
 <br>
 
+<p>As shown above, fitting a polynomial regression of degree 2 (since the Kuznets curve has a quadratic shape) to our plot showed a weak correlation between our first principal component and PM2.5 concentration. We then used the Linear Regression package in sklearn to confirm our results. x1 was PC1, and x2 was PC1^2 (the quadratic term). Whilst x2 had a weak p-value, x1 had a p-value < 0.05, which implied a negative linear relationship between PM2.5 and our development index, as witnessed on the scatter plot. </p>
+
+<br>
+
 <figure>
-    <img src="ds105 pic\piecharts.png" alt="Pie chart showing PM2.5 concentration levels accross 3 years" class="center">
-    <figcaption  style="color:white; font-size:20px">Pie chart showing PM2.5 concentration levels accross 3 years</figcaption>
+    <img src="ds105 pic\PCA2.png" alt="Regression results for PM2.5 against 1st Principal component" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 9: Regression results for PM2.5 against 1st Principal component</figcaption>
 </figure>
 
 <br>
 
-<h3> Sub-Problem 1:  Which World Bank indicators best predict the level of development so that we can use them in our development index?</h3>
-<br>
+<h3>Sub-Problem 2:  Which development indicators best predict a U-shaped Environmental Kuznets Curve?</h3>
 
-<p> We use the LinearRegression package on Python to select the two most significant indicators among our five indicators, using a quadratic regression model. Regression Equation:</p>
+<p>We use the LinearRegression package on Python to select the two most significant indicators among our six indicators, using a quadratic regression model. </p>
 
 <br>
 
@@ -378,21 +406,18 @@
 
 <figure>
     <img src="ds105 pic\variablesdataframe.png" alt="Dataframe of the variables" class="center">
-    <figcaption  style="color:white; font-size:20px">Dataframe of the variables</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 10: Dataframe of the variables</figcaption>
 </figure>
 <br>
 <figure>
     <img src="ds105 pic\codelinearregression.png" alt="Code Linear Regression" class="center">
-    <figcaption  style="color:white; font-size:20px">Code Linear Regression</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 11: Code Linear Regression</figcaption>
 </figure>
 
 <br>
 <p>As shown by the table of regression results, the variables which stand out most are x2, x6 and x9.  These correspond to log population squared (mean-adjusted) (x2), and log life expectancy squared (mean adjusted) (x6), and log population growth (mean-adjusted) (x9). This helped us figure out which indicators were most relevant in our analysis. </p>
 <br>
-<p>Sub-Problem 2: Do pollution level rise as countries industrialize?</p>
-<p>Sub-Problem 3: Do pollution levels decline during post-industrialisation (as economies transition from manufacturing to services)</p>
-<br>
-<p>By looking at GNI/per capita data against PM2.5 data, we can see that that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show a validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the datapoints). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies. </p>
+<p>By looking at GNI/per capita data against PM2.5 data, we can see that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show a validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the data points). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies. </p>
 <br>
 
 <!-- Slideshow container -->
@@ -484,8 +509,34 @@
 
 <h3>PCA Analysis</h3>
 <br>
-<p>We used the Principal Component Analysis (PCA) to reduce the dimensionality of our dataset from n=6 to n=2. Inputting 6 variables returns 6 principal components, each showing a linear combination of the 6 variables. Each principal component represents the “direction vector” of the maximal amount of variance in the dataset. Therefore, all principal components will be orthogonal to each other, and we can select the two PCs which retains most information in the data. </p>
-<p>For our model, reducing the dimensionality of our data was a useful tool in visualising our results. Our aim was to create a “development index”, which happened to be the first principal component, and plot PM2.5 concentration against this index. The first principal component would give the “best” linear combination of all our development indicators in one dimension. Fitting a polynomial regression to our data would help us see the correlation between our development index and PM2.5 concentration. </p>
+<p>We used Principal Component Analysis (PCA) to reduce the dimensionality of our dataset from n=6 to n=2. Inputting 6 variables returns 6 principal components, each showing a linear combination of the 6 variables. Each principal component represents the “direction vector” of the maximal amount of variance in the dataset. Therefore, all principal components will be orthogonal to each other, and we can select the two PCs which retains most information in the data. </p>
+<p>For our model, reducing the dimensionality of our data was a useful tool in visualising our results. Our aim was to create a “development index”, which happened to be the first principal component, and to plot PM2.5 concentration against this index. The first principal component would give the “best” linear combination of all our development indicators in one dimension. Fitting a polynomial regression to our data would help us see the correlation between our development index and PM2.5 concentration. As shown below, fitting a polynomial regression of degree 2 (since the Kuznets curve has a quadratic shape) to our plot showed a weak correlation between our first principal component and PM2.5 concentration. We then used the Linear Regression package in sklearn to confirm our results. x1 was PC1, and x2 was PC1^2 (the quadratic term). Whilst x2 had a weak p-value, x1 had a p-value < 0.05, which implied a negative linear relationship between PM2.5 and our development index, as witnessed on the scatter plot. </p>
+<br>
+
+<figure>
+    <img src="ds105 pic\PCA1.png" alt="Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 11: Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis </figcaption>
+</figure>
+
+<br>
+
+<figure>
+    <img src="ds105 pic\PCA2.png" alt="Regression results for PM2.5 against 1st Principal component" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 12: Regression results for PM2.5 against 1st Principal component</figcaption>
+</figure>
+<br>
+
+<h3>Next:</h3>
+
+<div class="row">
+  <div class="column3">
+    <a href="brazil.html">
+      <figure>
+      <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:30%; height:30%">
+    <figcaption style="color:black; font-size:20px">Brazil Analysis</figcaption>
+    </figure>
+    </a>
+  </div>
 
 </div>
 </body>

@@ -11,11 +11,11 @@
 
 </head>
 
-<!-- Navigation (to change the style) -->
+<!-- style-->
 <style>
   h1 {
       font-weight: normal;
-      color: white;
+      color: black;
       font-size: 100px;
       text-align: center;
       font-family: Luminari, sans-serif;
@@ -23,7 +23,7 @@
 
   h3 {
       font-weight: bold;
-      color: white;
+      color: black;
       font-size: 22px;
       text-align: center;
       font-family: Luminari, sans-serif;
@@ -34,7 +34,7 @@
     margin-right: auto;
     width: 50%;
   }
-  
+
   a:link {
       font-size: 14px;
       background-color: transparent;
@@ -43,7 +43,7 @@
   body {
       margin: 0;
       padding: 0;
-      background-color: black;
+      background-color: white;
     }
 
   p {
@@ -51,7 +51,9 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 20px;
       margin: 10px;
-      color:white;
+      margin-left: 150px;
+      margin-right:150px;
+      color:black;
     }
   
 /* Three image containers (use 25% for four, and 50% for two, etc) */
@@ -60,6 +62,12 @@
   width: 33.33%;
   padding: 5px;
   }
+
+.column1 {
+float: left;
+width: 50%;
+padding:5px;
+}
 
 /* Clear floats after image containers */
 .row::after {
@@ -139,19 +147,33 @@
 
 <script src="script.js" type="text/javascript"></script>
 
-<br>
-<!-- Navigation -->
-<nav>
-  <a href="index.html">MOTIVATION</a>
-  <a href="analysis.html">MULTIPLE COUNTRY ANALYSIS</a>
-  <a href="brazil.html">BRAZIL ANALYSIS</a>
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+  <a href="script.js" onclick="w3_close()"
+  class="w3-bar-item w3-button">Close Menu</a>
+  <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Motivation</a>
+  <a href="analysis.html" onclick="w3_close()" class="w3-bar-item w3-button">Multiple Country Analysis</a>
+  <a href="brazil.html" onclick="w3_close()" class="w3-bar-item w3-button">Brazil Analysis</a>
+
 </nav>
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+    <div class="w3-center w3-padding-16">DS105M Project</div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
 
 <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
     <div class="w3-center">
     <h4>A MORPHEUS PRODUCTION</h4>
-    <h1 class="w3-xxxlarge w3-animate-bottom">THE ENVIRONMENTAL KUZNET'S CURVE</h1>
+    <h1 class="w3-xxxlarge w3-animate-bottom" style="color:white">THE ENVIRONMENTAL KUZNET'S CURVE</h1>
     <div class="w3-padding-32">
         <h2 class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" style="font-weight:900;">A STUDY OF PM2.5 DATA AND LEVEL OF DEVELOPMENT</h2>
     </div>
@@ -186,7 +208,7 @@
     <a href="index.html">
       <figure>
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Environmental_Kuznets_Curve.png"  alt="Environmental Kuznet's Curve" style="width:100%; height:250px"/>
-        <figcaption style="color:white; font-size:20px">Our Motivation</figcaption>
+        <figcaption style="color:black; font-size:20px">Our Motivation</figcaption>
       </figure> 
     </a>
   </div>
@@ -194,7 +216,7 @@
     <a href="analysis.html">
       <figure>
       <img src="ds105 pic\multiplecountry.PNG" alt="Multiple Country Analysis" style="width:100%; height:250px"> 
-      <figcaption style="color:white; font-size:20px">Multiple Country Analysis</figcaption>
+      <figcaption style="color:black; font-size:20px">Multiple Country Analysis</figcaption>
       </figure>
     </a>
   </div>
@@ -202,7 +224,7 @@
     <a href="brazil.html">
       <figure>
       <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:100%; height:250px">
-    <figcaption style="color:white; font-size:20px">Brazil Analysis</figcaption>
+    <figcaption style="color:black; font-size:20px">Brazil Analysis</figcaption>
     </figure>
     </a>
   </div>
@@ -223,85 +245,70 @@
     </div>
 
 <p style="text-align: justify">
-  Our research attempts to evaluate the validity of the Kuznets curve. Named after Nobel Prize-winning economist Simon Kuznets, this curve relates environmental degradation (pollution) to the stage of economic development
+  Our research attempts to evaluate the validity of the Environmental Kuznets curve, named after Nobel Prize-winning economist Simon Kuznets, which relates environmental degradation (pollution) to the stage of economic development.
 </p>
-
 <br>
-
 <p style="text-align: justify">
-    The increasing frequency of climate disasters across the globe calls for a coordinated response among world leaders and institutions. The Kuznets curve could help policymakers target these global efforts by reducing emissions in high-emitting countries, accelerating the path towards net zero. 
+  We use Particulate Matter (PM2.5) concentration data from the WHO’s API and various development indicators from the World Bank’s database to test for a relationship between development and pollution. Using yearly data from 175 countries, we find little evidence of the relationship implied by Kuznets.  
 </p>
-
 <br>
-<br>
-
 <p style="text-align: justify">
-    We use Particulate Matter (PM2.5) concentration data from the WHO’s API and various development indicators from the World Bank’s database to test for a relationship between development and pollution. Using both a PCA and mean-adjusted log-scaled quadratic linear regression model, we find little evidence of the relationship implied by Kuznets. Instead, plotting PM2.5 against individual indicators give very different results
+  We also use micro-level data in Brazil , to do a spacial analysis of the relationship between GDP/capita and PM2.5 in Brazil city capitals. Once again, this approach generated a weak relationship between the levels of pollution and economic development. 
 </p>
 
 <br>
-
-<p style="text-align: justify">
-    We conclude by zooming in on the Brazilian economy, which has experienced substantial economic development over the last 30 years and has seen a decline in its air pollution level since 2010.
-</p>
-
 <br>
+<br>
+
 
 <h3> Our initial aims and motivation </h3>
 
 <br>
 
 <p>
-    We started working on initial ideas around the time of the COP27, so we wanted to look into the theme of climate data. We were inspired by the works of UChicago’s Esteban Rossi-Hansberg in the field of quantitative spatial economics, notably his works using satellite data. We initially wanted to focus on an economic region, such as Sub-Saharian Africa, and look at intertemporal changes in development and air pollution. For example, comparing economies such as Nigeria and Mali and their levels of air pollution over time could tell us about the shape of the Philips curve during the industrialisation stage. Comparing these levels to average pollution levels (over the last two decades) in developed (post-industrialised) economies in Europe would give a broad indication of the shape of the Philips curve. However, because of constraints on data (particularly in developing economies in Sub Saharian Africa), we opted to look at fixed time pollution data but with a larger sample of countries. As such, gathering pollution data for a given year by country and would enable us to show all stages of development and obtain a worldwide Environmental Kuznets curve. 
+  We started working on initial ideas around the time of the COP27, so we wanted to look into the theme of climate data. We were inspired by the works of UChicago’s Esteban Rossi-Hansberg on quantitative spatial economics, notably his works using satellite data to trace global warming. We initially wanted to focus on an economic region, such as Sub-Saharan Africa, and look at changes in development and air pollution over time. For example, comparing economies such as Nigeria and Mali and their levels of air pollution over time could tell us about the shape of the Kuznets curve during the industrialisation stage. 
 </p>
 
 <br>
-<p>Furthermore, a goal of COP27 is to help industrialising economies navigate a lower emission path without sacrificing economic development. Looking at a large sample of countries would reveal outliers in the trend, and would pin down which countries need to do the most efforts to combat their pollution level given their level of development. This exercise could prove quite useful for global policymakers as we aim for net zero without sacrificing economic growth. 
+<p>The Environmental Kuznets Curve theory (EKC), formally introduced by Grossman and Krueger (1991), suggests a U shaped relationship between environmental degradation and income, namely that the level of environmental degradation peaks at a given income level, after which environmental quality improves. Comparing these levels to average pollution levels (over the last two decades) in developed economies (namely Europe) would give a broad indication of the validity of this U shape. However, because of constraints on data (particularly in developing economies in Sub Saharan Africa), we opted to look at yearly pollution data with a larger sample of countries. Gathering pollution data by country for a given year would enable us to show all stages of development and obtain a worldwide EKC. It has been theorised that economic development can lead to improvements in environmental quality through different channels. For example, past the industrialisation stage, the size of the manufacturing sector in the economy goes down, and the share of services goes up. As such, polluting industries are offshored to industrialising economies, which have a cheaper workforce. This would suggest that as countries become more developed, environmental quality improves, whilst their pollution is offshored to industrialising economies. However, The Environmental Kuznets Curve has been tested empirically in a number of studies, but the results have been mixed. Hence, we wanted to further investigate it. 
 </p>
 
 <br>
-
-<h3>Our central hypothesis is that PM2.5 concentration levels peak during the industrialisation stage of development. </h3>
-
+<p>A goal of COP27 is to help industrializing economies navigate a lower emission path without sacrificing economic development. For pertinent policy proposals, it is important to have a good understanding of the relationship between economic development and environmental degradation. The Environmental Kuznets Curve can help expound this relationship. </p>
 <br>
 
-<p>
-    In the economics literature, there is a recent focus on the relationship between economic development and the environment, with the debate centering between optimists and pessimists. The Environmental Kuznets Curve (EKC) theory, first introduced by Grossman and Krueger (1991),  suggests that there is a U shaped relationship between environmental degradation and income, namely that the level of environmental degradation will increase until a certain level of income is reached, and after this point the environment will improve. The EKC has been tested empirically in a number of studies, but the results have mixed. 
-    other studies, considered relationships between other indicators such as arsenic/lead/mercury concentration, NOx, SO2, CO emissions. 
-</p>
+<h3>Our central hypothesis is that PM2.5 concentration peaks at a certain level of economic developement after which they decrease.  We are expecting to see an inverted U shape relationship between environmental degradation and economic development. </h3>
+
+<br>
 
 <div>
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Environmental_Kuznets_Curve.png"
                     alt="Envionmental Kuznet's Curve Picture" style="height:500px; width:700px; text-align:center; margin: 300px">
 </div>
 <div class="w3-padding w3-white w3-display-container">
-    <h2>Our Main Aim</h2>
-    <p style="color: black">The primary aim of our project is to recreate a Kuznets curve by using development data and PM2.5 concentration data for all countries for a fixed time period. Our final curve will have a combined development index on the x-axis and PM2.5 concentration on the y-axis (averaged over one decade).</p>
-    <p style="color: black">Our datapoints will be individual countries’ level of development and level of air pollution for a fixed time period. We will be able to encapsulate all stages of development, which will enable us to have a full Kuznets curve. If our hypothesis is correct, we will expect the graph to have a bell shape. The secondary aim of our research is to investigate the strength of individual development indicators in predicting the level of air pollution, and use World Bank data to generate plots for PM2.5 concentration against individual indicators</p>
-    <p style="color: black">Finally, we will look at time series data of PM2.5 concentration indicators and create animated plots on R, showing selected countries' pollution paths at key development stages. We will also focus on a single country-Brazil, and see if we see evidence of the EKC relation when doing city comparisons. </p>
+    <h2 style="text-align:center">Our Main Aim</h2>
+    <p style="color: black">The primary aim of our project is to test if our data displays the relationship implied by the Environmental Kuznets Curve. Our final curve will have a combined development index on the x-axis and PM2.5 concentration on the y-axis. Our data points will be individual countries’ level of development and level of air pollution for a given time period. </p>
+    <p style="color: black">We will create a development index by using Principal Component Analysis (PCA) on an array of development indicators, using the first component as a proxy for level of development. We will show variation in development by using a large sample of countries at different stages of development. If our hypothesis is correct, we will expect the graph to have an inverted U shape. </p>
+    <p style="color: black">Secondly, we will use individual development indicators, such as GNI/capita, life expectancy and population to predict the level of air pollution. We will also test our relation by looking at variations within a country, using city-level pollution data for Brazil.    </p>
 </div>
 
 <br> 
-
-
-<p>As mentioned above, our research uses PM.5 data as a proxy for environmental degradation. PM2.5 refers to fine particulate matter, defined as particles that are less than 2.5. microns or less in diameter. PM2.5 is an air pollutant that is a concern for people’s health at a high level. Pm2.5 particles can be inhaled, depositing on airways and lungs, causing tissue damage and lung inflammation. They can cause an array of health issues including  premature mortality, increased hospital admissions for heart or lung causes, acute and chronic bronchitis. </p>
-
 <h3>Next:</h3>
 
 <div class="row">
-  <div class="column">
+  <div class="column1">
     <a href="analysis.html">
       <figure>
-      <img src="ds105 pic\multiplecountry.PNG" alt="Multiple Country Analysis" style="width:100%; height:250px"> 
-      <figcaption style="color:white; font-size:20px">Multiple Country Analysis</figcaption>
+      <img src="ds105 pic\multiplecountry.PNG" alt="Multiple Country Analysis" style="width:75%; height:250px"> 
+      <figcaption style="color:black; font-size:20px">Multiple Country Analysis</figcaption>
       </figure>
     </a>
   </div>
-  <div class="column">
+  <div class="column1">
     <a href="brazil.html">
       <figure>
-      <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:100%; height:250px">
-    <figcaption style="color:white; font-size:20px">Brazil Analysis</figcaption>
+      <img src="ds105 pic\brazil_flag.png" alt="Brazil Analysis" style="width:75%; height:250px">
+    <figcaption style="color:black; font-size:20px">Brazil Analysis</figcaption>
     </figure>
     </a>
   </div>
