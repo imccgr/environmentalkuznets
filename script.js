@@ -1,3 +1,4 @@
+//Code for slideshow
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -27,7 +28,7 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-// Script to open and close sidebar
+// Code for sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
 }
