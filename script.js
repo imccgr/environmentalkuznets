@@ -2,7 +2,7 @@
 let slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
+// Next/previous controls (switch to diff slides)
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
@@ -12,6 +12,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
+//function show slides to be able to skip through slides
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -19,7 +20,7 @@ function showSlides(n) {
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = "none"; //display correct slide
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
@@ -32,7 +33,7 @@ function showSlides(n) {
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
 }
- 
+ //code to close the sidebar
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }

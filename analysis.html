@@ -274,7 +274,7 @@
 <br>
 
 <figure>
-    <img src="visualisations + webpage pictures\rawdatawho.png" alt="Raw data from the WHO PM2.5 API (Afghanistan, 2010)" class="center" height="50px" width="200px">
+    <img src="visualisations + webpage pictures\API_afg_2010_snippet.png" alt="Raw data from the WHO PM2.5 API (Afghanistan, 2010)" class="center">
     <figcaption  style="color:black; font-size:20px">Fig 2: Raw data from the WHO PM2.5 API (Afghanistan, 2010)</figcaption>
 </figure>
 
@@ -285,7 +285,7 @@
 <p style="text-align: justify">This resulted in the following dataset (196 rows * 11 columns):</p>
 
 <figure>
-    <img src="visualisations + webpage pictures\Dataset for PM2.5 concentration.png" alt=" Dataset for PM2.5 concentration, 2010-2019, 195 countries" class="center" height="200px" width="700px">
+    <img src="visualisations + webpage pictures\final_pm25_dataframe.png" alt=" Dataset for PM2.5 concentration, 2010-2019, 195 countries" class="center" height="200px" width="700px">
     <figcaption  style="color:black; font-size:20px">Fig 3: Dataset for PM2.5 concentration, 2010-2019, 195 countries</figcaption>
 </figure>
 
@@ -303,7 +303,7 @@
 <p style="text-align: justify">We realised that 4 of our indicators (School Enrolment, Public Spending on Education, Poverty headcount ratio, size of manufacturing sector) had less than 100 datapoints (out of 195 countries), so keeping them would mean working with a much smaller pool of countries. This could also bring bias into our data, as low income countries are generally more likely to have missing data than high income countries. As such, we reduced the number of development indicators from 10 to 6. With these, we dropped countries with missing values across the indicator list, reducing the number of countries from 195 to 175. As shown above, the development dataset was in ‘long’ format. Merging with the air pollution dataframe enabled us to change the dataset to ‘wide’ format. We used the df.merge (on) function to merge both datasets on “country code”.</p>
 
 <figure>
-    <img src="visualisations + webpage pictures\reducingcountries.png" alt="Data cleaning for development indicators, changed to “wide” format" class="center">
+    <img src="visualisations + webpage pictures\data_clean_NEW.png" alt="Data cleaning for development indicators, changed to “wide” format" class="center">
     <figcaption  style="color:black; font-size:20px">Fig 4: Data cleaning for development indicators, changed to “wide” format
     </figcaption>
 </figure>
@@ -314,7 +314,7 @@
 <br>
 
 <figure>
-    <img src="visualisations + webpage pictures\mergeddataframe.png" alt="snippet of merged dataframe" class="center">
+    <img src="visualisations + webpage pictures\dataframe_final_NEW.png" alt="snippet of merged dataframe" class="center">
     <figcaption  style="color:black; font-size:20px">Fig 5: snippet of merged dataframe 
     </figcaption>
 </figure>
@@ -334,7 +334,7 @@
 <p style="text-align: justify">We started by looking at changes in the distribution of PM2.5 concentration over time. </p>
 
 <figure>
-    <img src="visualisations + webpage pictures\distributionofPM25.png" alt="Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time." class="center">
+    <img src="visualisations + webpage pictures\boxplot_NEW.png" alt="Fig. 4: Distribution of world PM2.5 concentration data [175 countries] across time." class="center">
     <figcaption  style="color:black; font-size:20px">Fig. 6: Distribution of world PM2.5 concentration data [175 countries] across time.</figcaption>
 </figure>
 
@@ -351,7 +351,7 @@
 <p style="text-align: justify">The histogram above shows the change in the distribution of PM2.5 levels across classes. Between 2010 and 2019, more than 10 countries reduced their PM2.5 levels below 10 μg/m^3. At the other tail of the distribution, countries with very high PM2.5 levels have seen a decline in their pollution levels, shifting towards the middle of the distribution.</p>
 <br>
 <figure>
-    <img src="visualisations + webpage pictures\newpiechart.png" alt=" Pie charts of PM2.5 levels across time" class="center">
+    <img src="visualisations + webpage pictures\pie_charts_final.png" alt=" Pie charts of PM2.5 levels across time" class="center">
     <figcaption  style="color:black; font-size:20px">Fig 8: Pie charts of PM2.5 levels across time.</figcaption>
 </figure>
 <br>
