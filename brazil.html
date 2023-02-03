@@ -78,8 +78,7 @@
 
 <!-- Sidebar (hidden by default) -->
 <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-    <a href="script.js" onclick="w3_close()"
-    class="w3-bar-item w3-button">Close Menu</a>
+    <a href="brazil.html" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
     <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Motivation</a>
     <a href="analysis.html" onclick="w3_close()" class="w3-bar-item w3-button">Multiple Country Analysis</a>
     <a href="brazil.html" onclick="w3_close()" class="w3-bar-item w3-button">Brazil Analysis</a>
@@ -108,14 +107,15 @@
     </div>
 </header>
 
-<h3>Sub-Problem 5: Can we witness the Kuznets curve by looking at the evolution of industrializing countries over time? </h3>
+<h3>Motivation</3>
 <br>
-<p>Because we found limited evidence of the Environmental Kuznets Curve when doing cross country comparisons, we wanted to further investigate the issue. In our research so far, we did cross country analysis.  One of the potential reasons for not seeing the curve, is that counties have different characteristics that could impact the PM2.5 concentration, through other economic channels than development. As such there may be country fixed effects that we do not account for. We specifically choose to focus on Brazil, because it went through different stages of development in a relatively short period of time. This would allow us to cover a large span of development, with less data, which is useful since pm2.5 data is not available on a large time horizon. </p>
+<p>Because we found limited evidence of the Environmental Kuznets Curve when making cross-country comparisons, we wanted to investigate the issue further. One of the potential reasons for not seeing the curve is that countries have different characteristics that could impact PM2.5 concentration through other economic channels than development. There may be country fixed effects that we do not account for. We specifically choose to focus on Brazil, because it went through different stages of development in a relatively short time. This would allow us to cover a large span of development, with fewer data, which is useful since PM2.5 data is not available on a large time horizon.</p>
 <br>
-<p>Initially, we wanted to do a times series analysis of the data, to assess the strength of the relationship between PM2.5 and economic development, measured by GDP/capita. However, since there is limited data on PM2.5.  We would essentially only have 12 observations in the time series. The minimum recommended for a time series regression for a  sample is 20 observations. Moreover, PM2.5 data is likely to be correlated from one period to the next. These issues would induce significant bias and could result in spurious correlation results. Therefore, we ultimately decided against doing a time series since it would likely not result in meaningful conclusions about the EKC. </p>
+<p>Initially, we wanted to do a times series analysis of the data, to assess the strength of the relationship between PM2.5 and economic development, measured by GDP/capita. However, since there is limited data on historical PM2.5, we decided against continuing with the time series analysis.</p>
 <br>
-<p>When researching empirical literature, we can come across a paper on the relationship between Pm2.5 and economic development in China.. The authors used a Spatial Durbin model to examine the relationship between PM2.5 data and economic growth and pollution in 13 cities  of the BTH region from 1998 to 2016. As such, we choose a different research approach inspired by the The environmental Kuznets curve for PM2.5 pollution in Beijing- Tianjin-Hebei region of China: A spatial panel data approach paper.  We choose to look at Brazil, rather than through time, across regions since there is a significant level of variation in development across the country.</p>
+<p>When researching empirical literature, we came across a paper on the relationship between PM2.5 and economic development in China.. The authors used a Spatial Durbin model to examine the relationship between PM2.5 data and economic growth and pollution in 13 cities of the BTH region from 1998 to 2016. As such, we choose a different research approach inspired by the The environmental Kuznets curve for PM2.5 pollution in Beijing- Tianjin-Hebei region of China: A spatial panel data approach paper.  We choose to look at Brazil across regions since there are significant variations in development across the country</p>
 <br>
+
 <h3>Data used: </h3>
 <br>
 <p>For the intertemporal analysis of Brazil: </p>
@@ -130,28 +130,29 @@
 <br>
 <p>Below is an example of the call used to get the GDP/capita data,and PM2.5 data.  We merged the data frames by date so that we can use them to create visualisations as well as scatterplots.</p>
 
-<img src="ds105 pic\code1.png" alt="Code" class="center">
-<img src="ds105 pic\code2.png" alt="Code" class="center">
-<img src="ds105 pic\code3.png" alt="Code" class="center">
-
+<img src="visualisations + webpage pictures\code1.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code2.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code3.png" alt="Code" class="center">
+<p>Fig 22: Data extraction from the IMF/World Bank API</p>
 <br>
-
+<h3>Results</h3>
+<br>
 <p>We used ggplot2 in R, to create scatter plots that would allow us to visualise the relationship between the variables of interest, GDP/capita and PM2.5, across time. </p>
 <br>
 <figure>
-    <img src="ds105 pic\Scatterplot1.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
+    <img src="visualisations + webpage pictures\Scatterplot1.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
     <figcaption  style="color:black; font-size:20px">Figure 1: Scatterplot showing the the evolution of GDP per capita from 1980-2021</figcaption>
 </figure>
 <br>
 <figure>
-    <img src="ds105 pic\Scatterplot1.png" alt="Scatterplot showing the evolution of PM2.5 from 1980-2021" class="center">
+    <img src="visualisations + webpage pictures\scatterplot2.png" alt="Scatterplot showing the evolution of PM2.5 from 1980-2021" class="center">
     <figcaption  style="color:black; font-size:20px">FFigure 2: Scatterplot showing the evolution of PM2.5 from 1980-2021</figcaption>
 </figure>
 <br>
-<p>Visually, we can infer the  EKC relation. For low per levels of development, there is more pollution, while starting from 2010, we see that as GDP/capita increases, Pm2.5 levels also fall, with somewhat of a lagged effect- since Brazil experiences a contraction of GDP per capita but PM2.5 levels continue to go down. </p>
-<p>However, since there is  not enough data available for PM2.5, we were unable to  continue with our initial time series analysis. We would essentially only have 12 observations in the time series. The minimum recommended for a time series regression for a  sample is 20 observations. Moreover, PM2.5 data is likely to be correlated from one period to the next. These issues would induce significant bias and could result in spurious correlation results. Therefore, we ultimately decided against doing a time series since it would likely not result in meaningful conclusions about the EKC. </p>
+<p>Visually, we are unable to infer a EKC relation. For the time period where GDP/capita is increasing (1980-2011) we see limited increases in PM2.5 from 15 to  16 µg/m^3. For the timer period where GDP/capita decreases  we actually also saw a decrease in PM.5 from around 16 to 13 µg/m^3. This would be a linear relation, rather than a curved relation.  </p>
+<p>However, since there is not enough data available for PM2.5, we were unable to  continue with our initial time series analysis. We would essentially only have 12 observations, so a time series regression would not tell us much about the trend. Moreover, PM2.5 data is likely to be auto-correlated from one period to the next. These issues would induce significant bias and could result in spurious correlation results. Therefore, we ultimately decided against doing a time series since it would likely not result in meaningful conclusions about the EKC.  </p>
 <br>
-<h3>Cross-country Analysis</h3>
+<h3>City-level Analysis</h3>
 <br>
 <h3>Data:</h3>
 <br>
@@ -166,40 +167,69 @@
 <br>
 <p>To get municipality level GDP/capita we combined two data sets from the Basedosdados, and matched them on the city id. This was necessary since the dataset containing gdp/capita did not include city names. </p>
 <br>
-<img src="ds105 pic\code4.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code4.png" alt="Code" class="center">
 <p>To get city level PM2.5 data we filtered the data set  to only include values for Brazil. </p>
 <br>
-<img src="ds105 pic\code5.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code5.png" alt="Code" class="center">
 <br>
 <p>For the capital cities, we manually imputed the names of the capital cities. </p>
 <br>
-<img src="ds105 pic\code6.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code6.png" alt="Code" class="center">
 <br>
 <p>We encountered difficulties when trying to match the data sets, since the city  names in the GDP/capita and Pm2.5 datasets are spelled differently. As such we had to use a fuzzy match . However, since the results returned were not perfect we had to manually create a data set. </p>
 <br>
-<img src="ds105 pic\code7.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code7.png" alt="Code" class="center">
 <br>
-<p>This was manageable since we chose to focus on the capital cities, but it limits the possibility of extending the research to the whole data set of 770 cities. Moreover, one of the capital cities did not have PM2.5 data which induced missing data. </p>
+<p>This process  was manageable since we chose to focus on the capital cities, but it limits the possibility of extending the research to the whole data set of 770 cities. Moreover, one of the capital cities did not have PM2.5 data which induced missing data in our analysis at a capital city level.  </p>
 <br>
 <h3>Results</h3>
 <br>
 <figure>
-    <img src="ds105 pic\Scatterplot3.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
+    <img src="visualisations + webpage pictures\scatterplot3.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
     <figcaption  style="color:black; font-size:20px">Figure 1: Scatterplot showing the the evolution of GDP per capita from 1980-2021</figcaption>
 </figure>
 <br>
 <p>In the scatterplot, we can see the relationship between GDP/Capita and Pm2.5 in individual capital. The data seems to display a curved relationship which would suggest the EKC relation. However, this is mostly driven by two data points, as we can see that most of the data is concentrated in low levels of capital, but spans the Pm2.5 area quite a bit. So if we would exclude the two data points, it would no longer seem like there is a coorelation. Therefore, looking at city level data also does not seem to yield meaningful data, in regard to the Environmental Kuznets curve. </p>
 <br>
 <h3>Conclusion</h3>
-<p>Our research aims to uncover the truth behind the Environmental Kuznets Curve. To do so, we conducted cross-country and cross-city comparisons by plotting different environmental indicators against PM2.5 levels in a large set of countries. Unfortunately, our findings showed no evidence of the curve.</p>
-<p>We also tried to create a development index through a principal component analysis regression to better understand the variation of PM2.5 in our sample. However, this too failed to produce meaningful evidence of the EKC relationship.</p>
-<p>As our analysis of the static world data set yielded limited results, we decided to focus on Brazil and study its fixed effects. While initial results from our analysis of GDP and PM2.5 data over time were promising, a lack of data forced us to pivot and conduct a spatial analysis of the relationship between GDP/capita and PM2.5 in Brazilian capital cities. Despite our efforts, we still found limited evidence of the Environmental Kuznets Curve.</p>
-<p>Since our research has its limitations, we can’t exclude the possibility of the Kuznets Curve. However, based on our analysis, it is likely that the relationship does not hold. This has significant implications for policy-makers, as it suggests that simply relying on industrialization alone is not enough to address environmental concerns. Instead, a more comprehensive approach is needed to balance economic growth with environmental protection.</p>
+<p>In this research project, we aimed to use both macro-level and micro-level data to display a U shaped relationship between air pollution levels and PM2.5, as shown by the Environmental Kuznets curve. To do so, we conducted cross-country and city-level comparisons by plotting different environmental indicators against PM2.5 levels in a large set of countries. Our findings showed little evidence of the U shaped relationship implied by the EKC. Instead, we found that key development indicators only went so far in predicting a bell shaped pattern for PM2.5. Our PCA model tended to show that PM2.5 concentration tends to decrease as our development index increases. Since widespread measurement of PM2.5 concentration is relatively new, the lack of historical data meant that we could only draw limited conclusions about the evolution of PM2.5 levels over time. As our analysis of the static world data set yielded limited results, we decided to focus on Brazil and study its fixed effects. Since initial results from our analysis of GDP and PM2.5 data over time showed the opposite relation between PM2.5 level and GDP/capita, a lack of data forced us to pivot and conduct a spatial analysis of the relationship between GDP/capita and PM2.5 in Brazilian capital cities. Despite our efforts, we still found limited evidence of the Environmental Kuznets Curve</p>
+<p>Whowever, our research also shows optimistic trends in reducing air pollution across the globe. In just the last 10 years, the number of countries achieving low levels of PM2.5 concentration has increased. Meanwhile, countries with very high air pollution levels have seen declines in their pollution levels.</p>
+<p>Since our research has its limitations, we can’t exclude the possibility of the Kuznets Curve. However, based on our analysis, it is likely that the relationship does not hold. This has significant implications for policy-makers, as it suggests that simply relying on industrialization alone is not enough to address environmental concerns. Instead, a more comprehensive approach is needed to balance economic growth with environmental protection</p>
 <br>
 <h3>What could be next? </h3>
 <br>
 <p>The climate crisis is a crucial issue that demands our immediate attention, and to tackle it effectively, we need to have a deep understanding of the factors that can drive sustainable change in the environment. To gain a more complete picture of the Environmental Kuznets Curve dynamics, we recommend extending our research efforts. Specifically, by continuing our spatial analysis of Brazilian cities and incorporating multiple years of data, we can conduct a temporal spatial analysis to better understand the relationship between GDP and PM2.5. This will provide valuable insights that could inform the development of effective policies aimed at protecting the environment.</p>
-
+<br>
+<h3>Appendix</h3>
+<br>
+<p>Data Sources</p>
+<ol style="margin:20px">
+  <li>
+    <a  style="font-size:20px" href="https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3">PM2.5 air pollution, mean annual exposure (micrograms per cubic meter) | DATA</a>
+  </li>
+  <li>
+    <a style="font-size:20px" href="https://www.imf.org/external/datamapper/api/help">IMF DataMapper API documentation</a>
+  </li>
+  <li>
+    <a style="font-size:20px" href="https://basedosdados.org">Base dos Dados</a>
+  </li>
+  <li>
+    <a style="font-size:20px" href="https://www.earthdata.nasa.gov/learn/articles/sedac-air-quality-health-data-collection">SEDAC Releases Air Quality Data for Health-Related Applications | Earthdata</a>
+  </li>
+</ol>
+<br>
+<p>Kuznets curve background research:</p>
+<ol style="margin:20px">
+  <li>
+    <p style="text-align:left">Alstine, J. V., & Neumayer, E. (2010). The environmental Kuznets curve. In K. P. Gallagher, Handbook on trade and the environment (pp. 49-59). Cheltenham UK.</p>
+  </li>
+  <li style="text-align:left">
+    <p>Grossman, G. M., & Krueger, A. B. (1995). Economic Growth and the Environment. The Quarterly Journal of Economics, 110(2), 353–377. </p>
+  </li>
+  <li style="text-align:left">
+    <p>Taguchi, H. (Apr 2013,). The environmental kuznets curve in Asia: The case of sulphur and carbon emissions. Asia-Pacific Development Journal, Volume 19, Issue 2, , p. 77 - 92.</p>
+  </li>
+</ol>
 
 <h3>Back:</h3>
 
@@ -215,7 +245,7 @@
   <div class="column1">
     <a href="analysis.html">
       <figure>
-      <img src="ds105 pic\multiplecountry.PNG" alt="Brazil Analysis" style="width:75%; height:250px">
+      <img src="visualisations + webpage pictures\multiplecountry.PNG" alt="Multiple Country" style="width:75%; height:250px">
     <figcaption style="color:black; font-size:20px">Multiple Country Analysis</figcaption>
     </figure>
     </a>
