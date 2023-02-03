@@ -233,7 +233,7 @@
 <h3>Our data</h3>
 <br>
 
-<p>Our research uses PM2.5 concentration data as a proxy for environmental degradation. PM2.5 refers to fine particulate matter, defined as particles that are less than 2.5. micrometers or less in diameter, and is emitted through fuel combustion. PM2.5 is an air pollutant that is a concern for people’s health at a high level, as its particles can be inhaled, depositing on airways and lungs, causing tissue damage and lung inflammation. Exposure to high concentration levels can cause an array of health issues including reduced life expectancy, increased hospital admissions for heart or lung causes, and acute and chronic bronchitis. We choose to look at PM2.5, instead of another indicator of pollution since this is recorded through satellites, and there is data available for a broad set of countries. Moreover, since its satellite data, the data quality does not differ with the individual country statistical agencies, thus it allows our research to be less biassed- especially towards poorer countries that have worse statistical agencies. </p>
+<p>Our research uses PM2.5 concentration data as a proxy for environmental degradation. PM2.5 refers to fine particulate matter, defined as particles that are less than 2.5. micrometers or less in diameter, and are emitted through fuel combustion. PM2.5 is an air pollutant that is a concern for people’s health at a high level, as its particles can be inhaled, depositing on airways and lungs, causing tissue damage and lung inflammation. Exposure to high concentration levels can cause an array of health issues including reduced life expectancy, increased hospital admissions for heart or lung causes, and acute and chronic bronchitis. We chose to study PM2.5 concentration specifically as it is the main way health organisations measure air pollution. In addition, PM2.5 levels can be easily measured using monitoring equipment and methods, allowing for quick and cost-effective assessment of air quality. Thus, data is more likely to be available in poorer countries, which have less resources to carry out these tests. All PM2.5 data in our project is measured in µg/m^3. </p>
 <br>
 <p>To measure economic development, we require various development indicators. Beyond GDP, economic development relies on other social indicators, namely education and health statistics. We selected 10 development indicators from the World Bank’s Health, Nutrition and Population, using data from 2010-2019 on 175 countries.</p>
 <br>
@@ -260,9 +260,9 @@
 <br>
 <p>Our first objective was cleaning and merging multiple datasets coherently. During the merging process, we ensured that the list of countries in both datasets matched each other, such that development data was correctly matched to a country’s PM2.5 concentration. Then, we cleaned the columns of the dataset by eliminating the development indicators with too much missing data. We cleaned the rows of the dataset by using the dropna() function, which enabled us to efficiently get rid of countries with missing values. We also converted data types where applicable. The dimensions of our main dataframe went from 196 rows by 20 columns to 175 rows by 17 columns. The number of rows are the number of countries, and the number of columns is the sum of our 6 remaining development indicators, and yearly PM2.5 concentration between 2010-2019. </p>
 <br>
-<p>Then, the first part of our research involved using Principal Component Analysis to create a “development index” using the first principal component. Using PCA is a useful tool to reduce the dimensionality of datasets and create 2D visualisations. In our case, we used the first principal component as a proxy for development, as features of all 6 indicators could be combined into 1 “index”. We then plotted PM2.5 concentration level against the first principal component and added a polynomial regression line. </p>
+<p>Then, the first part of our research looked at the relationship between PM2.5 concentration and individual development indicators. This involved using a multi-linear quadratic log regression model. Using R, we created scatterplots of PM2.5 concentration against each development indicator. We used a logarithmic scale on certain indicators to increase the legibility of our data. We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the data. We also created animated plots using panel data over 2010-2019, focusing on the behaviour of key economies at different stages of development. </p>
 <br>
-<p>The second part of our initial research involved looking at the relationship between PM2.5 concentration and individual development indicators. This involved using a multi-linear quadratic log regression model. Using R, we created scatterplots of PM2.5 concentration against each development indicator. We used a logarithmic scale on certain indicators to increase the legibility of our data. We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the data. We also created animated plots using panel data over 2010-2019, focusing on the behaviour of key economies at different stages of development. </p>
+<p>The second part of our research involved using Principal Component Analysis to create a “development index” using the first principal component. Using PCA is a useful tool to reduce the dimensionality of datasets and create 2D visualisations. In our case, we used the first principal component as a proxy for development, as features of all 6 indicators could be combined into 1 “index”. We then plotted PM2.5 concentration level against the first principal component and added a polynomial regression line. </p>
 <br>
 
 <h3>Obtaining Data</h3>
@@ -368,20 +368,22 @@
 <p>Sub-Problem 1:  Which development indicators best predict a U-shaped Environmental Kuznets Curve?</p>
 <p>We used the LinearRegression package on Python to find the most significant development indicators using a quadratic regression model. </p>
 
-<img src="visualisations + webpage pictures\equation.png" alt="Quadratic regression model: regression equation" class="center">
+<img src="visualisations + webpage pictures\equation2.png" alt="Quadratic regression model: regression equation" class="center">
 
-<p> In which:</p>
-<p>X_1 = Log population, mean-adjusted</p>
-<p>X_2 = Log GNI/capita, mean-adjusted</p>
+<p> Description of regression variables:</p>
+
+<p>X_1 = Share of urban population, mean-adjusted</p>
+<p>X_2 = Log population, mean-adjusted</p>
 <p>X_3 = Log Life expectancy, mean-adjusted</p>
-<p>X_4 = Female labour force ratio, mean-adjusted</p>
-<p>X_5 = Population growth, mean-adjusted</p>
+<p>X_4 = Log Life expectancy, mean-adjusted</p>
+<p>X_5 = X_5 = Female labour force ratio, mean-adjusted</p>
+<p>X_6 = Population growth, mean-adjusted</p>
 
 <br>
 
 <figure>
-    <img src="visualisations + webpage pictures\variablesdataframe.png" alt="Dataframe of the variables" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 10: Dataframe of the variables</figcaption>
+    <img src="visualisations + webpage pictures\Dataframe of development indicators and PM2.5 concentration in 2010, adjusted.png" alt="Dataframe of development indicators and PM2.5 concentration in 2010, adjusted" class="center">
+    <figcaption  style="color:black; font-size:20px">Fig 10: Dataframe of development indicators and PM2.5 concentration in 2010, adjusted</figcaption>
 </figure>
 <br>
 <figure>
@@ -391,7 +393,7 @@
 <br>
 <p>As shown by the table of regression results, the variables which stand out most are the linear terms of X_5 (p=0.013) and X_6 (p=0.001).  These correspond to population growth (x11), and female labour force ratio (x9). For quadratic terms, the most relevant indicators are log population (x4), log GNI/capita (x6) and log life expectancy (x8). </p>
 <br>
-<p>By looking at GNI/per capita data against PM2.5 data, we can see that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show a validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the data points). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies.</p>
+<p>By looking at GNI/per capita data against PM2.5 data, we can see that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show some validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the data points). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies.</p>
 <br>
 <p>Fig 12-21: PM2.5 concentration against develpment indicators, 2018</p>
 
