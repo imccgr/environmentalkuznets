@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" type="jpg" href="ds105 pic\globe.jpg"/>
+<link rel="shortcut icon" type="jpg" href="visualisations + webpage pictures\brazilicon.jpg"/>
 <title> Morpheus - The environnmental Kuznet's Curve </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -318,7 +318,7 @@
 
 <br>
 <h3>Main Limitations:</h3>
-<ol style="color:black font-size:20px; margin:10px">
+<ol style="color:black; font-size: 20px; margin:10px">
     <li>Our primary analysis only focuses on PM2.5 concentration levels over a short time period (2010-2019), which are the limits of the WHO’s PM2.5 data. Since changes in economic development typically occur over longer time periods, our research would have benefited from having access to historical PM2.5 data (e.g. 1980-). </li>
     <li>For simplicity, we chose to ignore the countries with missing data (NaN values) and indicators with too much missing data. This may introduce bias into our data, as low income countries may have disproportionately more missing data than high income countries. As shown in Angrist et al. (2021), “limited statistical capacity, the use of outdated data and methods, the large share of the agricultural sector, the informal economy and limited price data” are potential reasons why. However, our data cleaning only reduced the scope of countries by 20, going from 195 to 175 countries.</li>
     <li>For the PCA analysis, we used data from a single year (2018) to generate a plot of PM2.5 concentration against development level. This might make our model inaccurate: if 2018 was an “outlier” year for multiple countries, then this could distort the shape of our Kuznets curve. Hence, we replicated our plot using PM2.5 data from 2010, 2015 and 2019. </li>
@@ -389,7 +389,7 @@
 <br>
 <p>By looking at GNI/per capita data against PM2.5 data, we can see that pollution levels decline at early stages of development, as economies experience booming economic growth. This runs contradictory to the expected shape of the Kuznets curve, which predicts increasing emissions up to full industrialisation. The only key indicator which seems to show a validity to the Kuznets curve is life expectancy.  As life expectancy increases, the level of development increases, and for early-development economies we see a slight increase in pollution levels. However, we observe a twin-peak, where pollution levels seems to rise again when life expectancy levels are around 75 (most of the data points). At the right tail, we see a more pronounced decrease in PM2.5 concentration levels once life expectancy hits 80+ years. This is a sign of high income developed economies.</p>
 <br>
-<p>Fig 12-23: PM2.5 concentration against develpment indicators, 2018</p>
+<p>Fig 12-21: PM2.5 concentration against develpment indicators, 2018</p>
 <!-- Slideshow container -->
 <div class="slideshow-container">
 
@@ -469,11 +469,11 @@
 <br>
 <figure>
     <img src="visualisations + webpage pictures\PM2.5 concentration against life expectancy rank.png" alt="OLS Regression results for development indicators" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 24: PM2.5 concentration against life expectancy rank.</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 22: PM2.5 concentration against life expectancy rank.</figcaption>
 </figure>
 <figure>
     <img src="visualisations + webpage pictures\PM2.5 concentration against gni.png" alt="OLS Regression results for development indicators" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 25: PM2.5 concentration against GNI/capita rank.</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 23: PM2.5 concentration against GNI/capita rank.</figcaption>
 </figure>
 
 <br>
@@ -484,14 +484,14 @@
 <br>
 <figure>
     <img src="visualisations + webpage pictures\varianceratio.png" alt="Explained variance ratio, by principal component" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 26: Explained variance ratio, by principal component</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 24: Explained variance ratio, by principal component</figcaption>
 </figure>
 <br>
 <p>The explained variance of the first principal component was 0.414, the second 0.195, the third 0.172 and so on. The first principal component is “best” as it encapsulates the most information about the variance in the data. </p>
 
 <figure>
     <img src="visualisations + webpage pictures\PCA1.png" alt="Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 27: Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis </figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 25: Scatter plot on PM2.5 concentration against 1st Principal component in PCA analysis </figcaption>
 </figure>
 
 <br>
@@ -502,7 +502,7 @@
 
 <figure>
     <img src="visualisations + webpage pictures\PCA2.png" alt="Regression results for PM2.5 against 1st Principal component" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 28: Regression results for PM2.5 against 1st Principal component</figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 26: Regression results for PM2.5 against 1st Principal component</figcaption>
 </figure>
 
 <br>
@@ -513,18 +513,18 @@
 <br>
 <figure>
     <img src="visualisations + webpage pictures\code8.png" alt="Creating animated plots on R for PM2.5 against population growth and GNI/capita " class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 29: Creating animated plots on R for PM2.5 against population growth and GNI/capita </figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 27: Creating animated plots on R for PM2.5 against population growth and GNI/capita </figcaption>
 </figure>
 
 <br>
 <figure>
     <img src="visualisations + webpage pictures\plot_gni_pm2.5.new.gif" alt="Population growth % vs PM2.5 µg/m3 in 2010-2019 " class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 30 : Population growth % vs PM2.5 µg/m3 in 2010-2019 </figcaption>
+    <figcaption  style="color:black; font-size:20px">Fig 28 : Population growth % vs PM2.5 µg/m3 in 2010-2019 </figcaption>
 </figure>
 <br>
 <figure>
     <img src="visualisations + webpage pictures\plot_pop_pm2.5.new.gif" alt=" GNI per capita vs PM2.5 µg/m3 in 2010-2019" class="center">
-    <figcaption  style="color:black; font-size:20px">Fig 31 :  GNI per capita vs PM2.5 µg/m3 in 2010-2019
+    <figcaption  style="color:black; font-size:20px">Fig 29 :  GNI per capita vs PM2.5 µg/m3 in 2010-2019
     </figcaption>
 </figure>
 <br>
