@@ -158,38 +158,50 @@
 <br>
 <ol style="color:black; font-size:20px; margin:10px">
     <li>PM2.5- We used data from the Socioeconomic Data and Applications Center (SEDAC2), presented as annual global surface concentrations (mi- crograms per cubic metre, mg/m3) of mineral dust and sea-salt filtered PM2.5 over the period of 1998-2016. The data set contains information on 770 Brazilian cities. Of these Brazilian cities, we selected a random sample of 30 cities.</li>
-    <li>Economic development: We choose to focus on GDP/capita since there is no municipality level data on the other development indicators used in the first part of our research. We used the Basedosdados data set to extract  municipality level GDP/capita. </li>
+    <li>Economic development: We choose to focus on GDP/capita since there is no municipality level data on the other development indicators used in the first part of our research.We used the Basedosdados data set to extract municipality level “GDP,” “ID names” and population at the municipality level </li>
     <li>Cities: We choose to focus on the 26 regional capitals,since they are spread across Brazil so this minimises the effects of PM2.5 spreading across cities. Moreover, they are spread across a range of economic development, minimising the changes that we get cities from only one side of the curve. </li>
 </ol>
 
 <br>
 <h3>Data Wrangling</h3>
 <br>
-<p>To get municipality level GDP/capita we combined two data sets from the Basedosdados, and matched them on the city id. This was necessary since the dataset containing gdp/capita did not include city names. </p>
+<p>To get city level PM2.5 data we filtered the data set  to only include values for Brazil, and selected only the relevant columns on city name and year 2015.   </p>
 <br>
-<img src="visualisations + webpage pictures\code4.png" alt="Code" class="center">
-<p>To get city level PM2.5 data we filtered the data set  to only include values for Brazil. </p>
+<img src="visualisations + webpage pictures\code9.png" alt="Code" class="center">
+<p>To get municipality level GDP/capita we had to combine three data sets, since the “GDP”, “population” and “municipality id” were in separate data frames. </p>
 <br>
-<img src="visualisations + webpage pictures\code5.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code10.png" alt="Code" class="center">
 <br>
-<p>For the capital cities, we manually imputed the names of the capital cities. </p>
+<p>To get the capital city dataset, we manually imputed the names of the capital cities: </p>
 <br>
-<img src="visualisations + webpage pictures\code6.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code11.png" alt="Code" class="center">
 <br>
-<p>We encountered difficulties when trying to match the data sets, since the city  names in the GDP/capita and Pm2.5 datasets are spelled differently. As such we had to use a fuzzy match . However, since the results returned were not perfect we had to manually create a data set. </p>
+<p>The Basedosdatos data set contains GDP/capita figures but they are inaccurate, so we had to divide municipality GDP by the municipality population.  </p>
 <br>
-<img src="visualisations + webpage pictures\code7.png" alt="Code" class="center">
+<img src="visualisations + webpage pictures\code12.png" alt="Code" class="center">
 <br>
-<p>This process  was manageable since we chose to focus on the capital cities, but it limits the possibility of extending the research to the whole data set of 770 cities. Moreover, one of the capital cities did not have PM2.5 data which induced missing data in our analysis at a capital city level.  </p>
+<p>We encountered difficulties when trying to match the data sets, since the city names in the GDP/capita and PM2.5 datasets are spelled differently. As such we had to use fuzzy match. However, since the results returned were not perfect we had to manually create a data set.  </p>
 <br>
+<img src="visualisations + webpage pictures\code13.png" alt="Code" class="center">
+<br>
+<p>The insert shows an excerpt of the final data frame:</p>
+<br>
+<figure>
+  <img src="visualisations + webpage pictures\dataframebrazil" alt="Final capital city data frame" class="center">
+  <figcaption  style="color:black; font-size:20px">Figure 28:  Final capital city data frame </figcaption>
+</figure>
+<br>
+<p>This process  was manageable since we chose to focus on the capital cities, but it limits the possibility of extending the research to the whole data set of 770 cities. Moreover, one of the capital cities did not have PM2.5 data which induced missing data in our analysis at a capital city level.</p>
+<br>
+
 <h3>Results</h3>
 <br>
 <figure>
-    <img src="visualisations + webpage pictures\scatterplot3.png" alt="Scatterplot showing the the evolution of GDP per capita from 1980-2021" class="center">
-    <figcaption  style="color:black; font-size:20px">Figure 1: Scatterplot showing the the evolution of GDP per capita from 1980-2021</figcaption>
+    <img src="visualisations + webpage pictures\newnewscatterplot.png" alt="Scatterplot showing the relationship between PM.5 data and GDP/capita in Brazilian city capitals" class="center">
+    <figcaption  style="color:black; font-size:20px">Figure 25 Scatterplot showing the relationship between PM.5 data and GDP/capita in Brazilian city capitals </figcaption>
 </figure>
 <br>
-<p>In the scatterplot, we can see the relationship between GDP/Capita and Pm2.5 in individual capital. The data seems to display a curved relationship which would suggest the EKC relation. However, this is mostly driven by two data points, as we can see that most of the data is concentrated in low levels of capital, but spans the Pm2.5 area quite a bit. So if we would exclude the two data points, it would no longer seem like there is a coorelation. Therefore, looking at city level data also does not seem to yield meaningful data, in regard to the Environmental Kuznets curve. </p>
+<p>The scatterplot below shows the relationship between GDP/capita and PM2.5 in 2015. We used the stat_smooth function to add a locally weighted polynomial regression (LOESS) to the dataIn the scatterplot. We can see that the data displays more of the expected invented U-shaped relation, which corresponds to a greater extent to the relationship implied by the EKC. We can see that cities that have higher levels of GDP have lower levels of PM2.5 pollution. However, we can also see that at lower levels of development, PM2.5 levels span from about 2 to 15 µg/m3. Therefore, further investigation would be necessary, in order to grasp the full effects. </p>
 <br>
 <h3>Conclusion</h3>
 <p>In this research project, we aimed to use both macro-level and micro-level data to display a U shaped relationship between air pollution levels and PM2.5, as shown by the Environmental Kuznets curve. To do so, we conducted cross-country and city-level comparisons by plotting different environmental indicators against PM2.5 levels in a large set of countries. Our findings showed little evidence of the U shaped relationship implied by the EKC. Instead, we found that key development indicators only went so far in predicting a bell shaped pattern for PM2.5. Our PCA model tended to show that PM2.5 concentration tends to decrease as our development index increases. Since widespread measurement of PM2.5 concentration is relatively new, the lack of historical data meant that we could only draw limited conclusions about the evolution of PM2.5 levels over time. As our analysis of the static world data set yielded limited results, we decided to focus on Brazil and study its fixed effects. Since initial results from our analysis of GDP and PM2.5 data over time showed the opposite relation between PM2.5 level and GDP/capita, a lack of data forced us to pivot and conduct a spatial analysis of the relationship between GDP/capita and PM2.5 in Brazilian capital cities. Despite our efforts, we still found limited evidence of the Environmental Kuznets Curve</p>
