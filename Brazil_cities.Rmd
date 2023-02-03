@@ -1,57 +1,3 @@
-```{r}
-library("httr")
-library("jsonlite")
-library("magrittr")
-library("dplyr")
-library("tidyr")
-library("stringr")
-library("ggplot2")
-
-#use IMF API to get  GDP/capita data 
- res<-GET("https://www.imf.org/external/datamapper/api/v1/NGDPDPC/BRA")
-# convert API output to char
- c <- fromJSON(rawToChar(res$content),flatten=TRUE)        
- #save GDP dat as a data frame 
-df<-as.data.frame(c)
-#print data frame 
-df
-
-# pivot_long  data frame so that we get teh data as a separate colum 
-df_long<- df %>% pivot_longer(cols = contains("values.NGDPDPC.BRA."), names_to = "date", values_to = "GDP")
-df_long$date <- str_replace(df_long$date, "values.NGDPDPC.BRA.", "")
-df_long<-select(df_long, date, GDP)
-
-print(df_long)
-
-#use World Bank  API to get  GDP/capita data 
-response <- GET("https://api.worldbank.org/v2/country/BRA/indicator/EN.ATM.PM25.MC.M3", query = list(format = "json"))
-data <- content(response)
-pm <- fromJSON(rawToChar(response$content),flatten=TRUE)
-
-#save as dat frame 
-pm<-as.data.frame(pm)
-print(pm)
-# select colums of interest 
-pm_new<-select(pm,date,value)
-print(pm_new)
-
-# combine data frames conating GDP/capita data and PM2.5 exposure 
-merged_df <- inner_join(pm_new, df_long, by = "date")
-print(merged_df)
-
-# create scatter plot showing evolution of GDP levels through time 
-plot_pm2.5<- viz_4<-ggplot(merged_df, aes(x=date,y=value))+geom_point()+ stat_smooth(method = loess)+
-  labs(x = "Year", y = "PM2.5 µg/m3")+ggtitle("PM2.5 µg/m3 1980-2021")+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-
-# create scatter plot showing evolution of GDP levels through time 
-plot_gdp<- viz_4<-ggplot(merged_df, aes(x=date,y=GDP))+geom_point()+ stat_smooth(method = loess)+
-  labs(x = "Year", y = "GDP/capita")+ggtitle("GDP/capita 1980-2021")+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-print(plot_gdp)
-print(plot_pm2.5)
-
-```
-
 
 ```{r}
 # load required packages 
@@ -62,98 +8,78 @@ library(dplyr)
 library(ggplot2)
 library(ggrepel)
 
-#  import daat from EXCEl  
-data<-read_excel("sdei-annual-pm2-5-concentrations-countries-urban-areas-v1-1998-2016-xlsx.xlsx", sheet = 6)
-# Print data 
-print(data)
-# Filter dataframe so that it only includes values for Brazil 
-df_filtered <- data %>% filter(COUNTRYENG =="Brazil")
-print(df_filtered)
-# take a random sample of 30 Brazilian cities 
-sample_df<-df_filtered[sample(nrow(df_filtered),30),]
-print(sample_df)
 
-# read excel that has undated nightime information 
-df_2<-read_excel("citypm2.5.xlsx",sheet = 1)
-print(df_2)
-# Create a scatter plot of average nightime lights and  PM2.5 data 
-vix<- ggplot(df_2, aes(x=NTL,y= PM2.5)) + geom_point()+ stat_smooth(method = loess)+ labs(x = "average nightime light data", y = "PM2.5 µg/m3")
-print(vix)
-
-# Fit a second-degree polynomial to the data
-model <- lm(PM2.5 ~ poly(NTL, 2), data=df_2)
-
-# Print the summary of the model
-summary(model)
-
-# Plot the data and the model
-plot(df_2$NTL, df_2$PM2.5)
-lines(df_2$NTL, predict(model, newdata=df_2), col="red")
-
-# good for growth not good for actual gdp - nightyime growth... 
-
-# read csv file conating gdp/capita data 
-df_id<-read.csv("/Users/saratiron/Downloads/municipio.csv")
-head(df_id)
-```
-
-
-```{r}
-# load required packages 
-library(readxl)
-library(magrittr)
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(ggrepel)
-
-#  import PM2.5 data from EXCEl  
+# import PM2.5 data from EXCEl  
 data<-read_excel("sdei-annual-pm2-5-concentrations-countries-urban-areas-v1-1998-2016-xlsx.xlsx", sheet = 6)
 
-# Filter dataframe so that it only includes values for Brazil 
+# Filter PM2.5 dataframe so that it only includes values for Brazil 
 df_filtered <- data %>% filter(COUNTRYENG =="Brazil")
 print(df_filtered)
+
+# filter GDP/capital data so that it is easier to navigate 
+df_filtered_pm2.5<-df_filtered %>% select(c(NAME,AVPMU_2015))
+
+
+
+
+
+# population data
+df_pop<-read_csv("/Users/saratiron/Downloads/municipio-4.csv")
+head(df_pop)
+df_pop_1<-select(df_pop, c("id_municipio","ano","populacao"))
+head(df_pop_2)
+df_pop_1$ano<-as.numeric(df_pop_1$ano)
+df_pop_f<- df_pop_1 %>% filter(ano==2015)
+print(df_pop_f)
+
+
 
 # read csv file containg municiplaity levels Gdp/capita data 
 df_id<-read.csv("/Users/saratiron/Downloads/municipio.csv")
 
 #selected  relevant column and create a new data frame
-df_id_a<-select(df_id, c("id_municipio","ano","pib_pc"))
-head(df_id_a)
+df_gdp_a<-select(df_id, c("id_municipio","ano","pib"))
+df_gdp_f<- df_id_a %>% filter(ano==2015)
+
 
 # read csv file for municipality names
 df_name<-read_csv("/Users/saratiron/Downloads/municipio-2.csv")
 #select relevant columns 
 df_name<-select(df_name, c("id_municipio","nome"))
+df_name
 
-# merge data frame with municipality level names and gdp/capita using left join function 
-merged_df_gdp <- left_join(df_name, df_id_a, by = c("id_municipio" = "id_municipio"))
+
+# merge data frame with municipality level names and GDP/capital using left join function 
+merged_df_gdp <- left_join(df_name, df_gdp_f,by = c("id_municipio" = "id_municipio"))
 head(merged_df_gdp)
 
-# filter GDP/capita data so that it is easeir to navigate 
-df_filtered_2<- df_filtered %>% select(-c(URBID,STNDRDNAME,ISOURBID,SQKM,ISO3,UNSDCODE))
+merged_df_final<- left_join(merged_df_gdp, df_pop_f ,by = c("id_municipio" = "id_municipio"))
+head(merged_df_final)
 
-# filter megered data, by year 2015, so that it is easier to analyse when trying to match 
-merged_df_gdp_f<- merged_df_gdp %>% filter(ano==2015)
-df_filtered_pm2.5<-df_filtered_2 %>% select(c(NAME,AVPMU_2015))
+merged_df_final_2 <-merged_df_final %>% mutate(pib_capita = pib/populacao)
+head(merged_df_final_2)
+
+final_df<-merged_df_final_2 %>% select(c( "nome", "pib_capita","ano.x"))
+head(final_df)
+
+
 
 #save the names of capital cities in Brazil 
 city_capitals<-c("São Paulo","Rio de Janeiro", "Belo Horizonte", "Salvador", "Recife", "Fortaleza","Porto Alegre", "Belém", "Florianópolis", "São Luís", "Curitiba", "Goiânia", "João Pessoa", "Maceió", "Vitória", "Natal", "Cuiabá", "Campo Grande", "Palmas", "Manaus", "Porto Velho", "Rio Branco", "Macapá", "Boa Vista", "Teresina", "Aracaju")
 
-#since city name in spelled diffrently in the data sets, I created loop to identify values for city gdp/capita and Pm2.5 ,using fuzzymatch 
+#since city name in spelled differently in the data sets, I created loop to identify values for city gdp/capita and Pm2.5 ,using fuzzymatch 
 for (city_capital in city_capitals) {
-  a <- merged_df_gdp_f[agrep(city_capital, merged_df_gdp_f$nome), ]
+  a <- final_df[agrep(city_capital, final_df$nome), ]
   print(a)
 }
 
-# since fuzzymatch returns multiple possible values, created lists manually of gdp_capita for all capital cities 
-gdp_capita_2015_pesos<-c(113823596248,70886290204,12115491128, 7310661114,7495842375,7747339830,9876289747,4373063263,3215509117,5162802068,16473427540,5815661688, 2327245360, 2513202055, 6779187574, 2440073987, 2749304845, 3444385713, 897015539, 13258157604, 1823075826, 954510530	, 710336963, 680293888, 2350738134,1879378332)
-gdp_capita_2015
-
-#converted GDP/capita in pesos to GDp/capita in US$(using average 2015 conversion rate) to ensure consistency, since other values in project report GDP/ capita in $ 
+gdp_capita_2015_pesos<-c(54617.024	,49437.22, 34888.3, 19827.586, 29718.26	, 22079.14, 45556.341, 20294.406, 37514.07, 24954.169, 27584.679, 32593.34, 23087.771, 20409.05	,	64800.102	, 23669.221	,  36566.9	, 28350.455, 20534.381, 32597.83, 27787.98, 22286.03, 20006.482	, 23638.171	, 20891.089,25081.61)
+gdp_capita_2015_pesos
+#converted GDP/capital in pesos to GDP/capita in US$(using average 2015 conversion rate) to ensure consistency, since other values in project report GDP/ capita in $ 
 
 gdp_capita_2015<-gdp_capita_2015_pesos*0.3794
-gdp_capita_2015
+print(gdp_capita_2015)
+
 
 # since fuzzymatch returns multiple possible values, created lists manually of PM2.5 values for all capital cities 
 for (city_capital in city_capitals) {
@@ -188,10 +114,18 @@ brazil_viz<-brazil_viz+ theme(
     plot.title = element_text(size = rel(2))
   )
 print(brazil_viz)
+
+
+model_1 <- lm(PM2.5_2015 ~ poly(gdp_capita_2015, 2), data=df_brazil)
+print(model_1)
+
+plot(df_brazil$gdp_capita_2015,df_brazil$PM2.5_2015)
+lines(df_brazil$PM2.5_2015, predict(model, newdata=df_brazil), col="red")
+
+
+# since fuzzymatch returns multiple possible values, created lists manually of gdp_capita for all capital cities 
+
+
 ```
-
-
-```{r}
-
 
 ```
