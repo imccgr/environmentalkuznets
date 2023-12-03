@@ -8,7 +8,7 @@ We use evidence from PM2.5 and economic indicators data worldwide, finally focus
 
 ## Webpage
 
-Please check out our website which details our process, data and results. It can be found through the "index.html" file in the GitHub repo.
+Please check out our website which details our process, data and results. It can be found through the "index.html" file in the GitHub repo. Website link is: https://imccgr.github.io/environmentalkuznets/
 
 ## Collaborators
 
